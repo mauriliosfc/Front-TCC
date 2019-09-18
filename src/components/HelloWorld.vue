@@ -67,71 +67,78 @@
       <b-form-group
         label="cirurgia_limpa:"
       >
-        <b-form-radio-group
-          class="pt-2"
-          :options="boolena_options"
+         <input
+          type="checkbox"
           v-model="form.cirurgia_limpa"
-        ></b-form-radio-group>
+          true-value="1"
+          false-value="0"
+        >
       </b-form-group>
 
       <b-form-group
         label="anestesia_geral:"
       >
-        <b-form-radio-group
-          class="pt-2"
-          :options="boolena_options"
+         <input
+          type="checkbox"
           v-model="form.anestesia_geral"
-        ></b-form-radio-group>
+          true-value="1"
+          false-value="0"
+        >
       </b-form-group>
 
       <b-form-group
         label="emergencia:"
       >
-        <b-form-radio-group
-          class="pt-2"
-          :options="boolena_options"
+        <input
+          type="checkbox"
           v-model="form.emergencia"
-        ></b-form-radio-group>
+          true-value="1"
+          false-value="0"
+        >
       </b-form-group>
 
       <b-form-group
         label="gravidade_asa:"
       >
-        <b-form-radio-group
-          class="pt-2"
-          :options="boolena_options"
+         <input
+          type="checkbox"
           v-model="form.gravidade_asa"
-        ></b-form-radio-group>
+          true-value="1"
+          false-value="0"
+        >
       </b-form-group>
 
       <b-form-group
         label="protese:"
       >
-        <b-form-radio-group
-          class="pt-2"
-          :options="boolena_options"
+         <input
+          type="checkbox"
           v-model="form.protese"
-        ></b-form-radio-group>
+          true-value="1"
+          false-value="0"
+        >
       </b-form-group>
 
       <b-form-group
         label="cirurgia_videolaparoscopica:"
       >
-        <b-form-radio-group
-          class="pt-2"
-          :options="boolena_options"
+        <input
+          type="checkbox"
           v-model="form.cirurgia_videolaparoscopica"
-        ></b-form-radio-group>
+          true-value="1"
+          false-value="0"
+        >
       </b-form-group>
 
       <b-form-group
         label="iric:"
       >
-        <b-form-radio-group
-          class="pt-2"
+        <input
+          type="checkbox"
           v-model="form.iric"
-          :options="boolena_options"
-        ></b-form-radio-group>
+          true-value="1"
+          false-value="0"
+        >
       </b-form-group>
 
       <b-form-group
@@ -148,7 +155,8 @@
         <b-form-input v-model="form.hospital" id="nested-country"></b-form-input>
       </b-form-group> -->
     </b-form-group>
-    <b-button type="submit" variant="primary">Submit</b-button>
+    <button v-on:click="onSubmit()">Adiciona 1</button>
+    <!-- <b-button type="submit" variant="primary">Submit</b-button> -->
     <b-button type="reset" variant="danger">Reset</b-button>
     </b-form>
   </b-card>
@@ -156,6 +164,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'HelloWorld',
   data () {
@@ -166,7 +176,7 @@ export default {
         tipo_cirurgia: '',
         hospital: '',
         num_internacao: '',
-        primeira_internacao: '',
+        primeira_internacao: '0',
         idade_anos: '',
         acima_70_anos: '',
         t_ate_cirurgia: '',
@@ -174,14 +184,14 @@ export default {
         duracao_cirurgia: '',
         duracao_acima_duas_horas: '',
         potencial_contaminacao: '',
-        cirurgia_limpa: '',
-        anestesia_geral: '',
-        emergencia: '',
-        gravidade_asa: '',
+        cirurgia_limpa: '0',
+        anestesia_geral: '0',
+        emergencia: '0',
+        gravidade_asa: '0',
         asa_maior_2: '',
-        protese: '',
-        cirurgia_videolaparoscopica: '',
-        iric: '',
+        protese: '0',
+        cirurgia_videolaparoscopica: '0',
+        iric: '0',
         num_procedimentos: '',
         mais_de_um_proc: '',
         num_profissionais_bloco: '',
@@ -227,8 +237,28 @@ export default {
     }
   },
   methods: {
-    onSubmit( evt ){
-      console.log(this.form)
+    async onSubmit( evt ){
+      debugger
+      // await axios.post(`http://127.0.0.1:3001/api/v1/clients/user`, {           
+      await axios.get(`http://3.130.179.162:8080/buscar/`, {
+        headers: {                  
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "Authorization", 
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE" ,
+          "Content-Type": "application/json;charset=UTF-8"                   
+        }
+        // body: { 
+        //   dados: this.form
+        // }
+      })
+      .then(response => {
+        alert(response)
+        console.log(response)
+      })
+      .catch(e => {
+        alert(e)
+        console.log(e)
+      })
     },
     onReset( evt ){
       evt.preventDefault()
