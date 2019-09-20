@@ -1,7 +1,7 @@
 <template>
   <div>
   <b-card sm-5 bg-variant="light">
-    <b-form @submit="onSubmit" @reset="onReset">
+    <b-form @submit.prevent="onSubmit($event)"  @reset="onReset">
     <b-form-group
       label="Risco cirúrgico"
       label-size="lg"
@@ -155,7 +155,7 @@
         <b-form-input v-model="form.hospital" id="nested-country"></b-form-input>
       </b-form-group> -->
     </b-form-group>
-    <button v-on:click="onSubmit()">Adiciona 1</button>
+    <button type="submit">Adiciona 1</button>
     <!-- <b-button type="submit" variant="primary">Submit</b-button> -->
     <b-button type="reset" variant="danger">Reset</b-button>
     </b-form>
@@ -165,37 +165,38 @@
 
 <script>
 import axios from 'axios'
+import $ from "jquery";
 
 export default {
   name: 'HelloWorld',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      form: { 
-        tipo_cuirurgia_especifica: '',
-        tipo_cirurgia: '',
-        hospital: '',
-        num_internacao: '',
-        primeira_internacao: '0',
-        idade_anos: '',
-        acima_70_anos: '',
-        t_ate_cirurgia: '',
-        t_ate_maior_4: '',
-        duracao_cirurgia: '',
-        duracao_acima_duas_horas: '',
-        potencial_contaminacao: '',
-        cirurgia_limpa: '0',
-        anestesia_geral: '0',
-        emergencia: '0',
-        gravidade_asa: '0',
-        asa_maior_2: '',
-        protese: '0',
-        cirurgia_videolaparoscopica: '0',
-        iric: '0',
-        num_procedimentos: '',
-        mais_de_um_proc: '',
-        num_profissionais_bloco: '',
-        acima_4_profissionais: ''
+      form: {
+        "acima_4_profissionais": 0,
+        "acima_70_anos": 0,
+        "anestesia_geral": 1,
+        "asa_maior_2": 0,
+        "cirurgia_limpa": 0,
+        "cirurgia_videolaparoscopica": 1,
+        "duracao_acima_duas_horas": 1,
+        "duracao_cirurgia": 235,
+        "emergencia": 0,
+        "gravidade_asa": 2,
+        "hospital": 4,
+        "idade_anos": 42,
+        "iric": 0,
+        "mais_de_um_proc": 0,
+        "num_internacao": 1,
+        "num_procedimentos": 1,
+        "num_profissionais_bloco": 2,
+        "potencial_contaminacao": 4,
+        "primeira_internacao": 1,
+        "protese": 1,
+        "t_ate_cirurgia": 0,
+        "t_ate_maior_4": 0,
+        "tipo_cirurgia": 2,
+        "tipo_cuirurgia_especifica": 1
       },
       tce_options: [
         { value: 1, text: 'Laparotomia exploradora – videolaparoscópica' },
@@ -237,28 +238,43 @@ export default {
     }
   },
   methods: {
-    async onSubmit( evt ){
-      debugger
-      // await axios.post(`http://127.0.0.1:3001/api/v1/clients/user`, {           
-      await axios.get(`http://3.130.179.162:8080/buscar/`, {
-        headers: {                  
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Headers": "Authorization", 
-          "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE" ,
-          "Content-Type": "application/json;charset=UTF-8"                   
-        }
-        // body: { 
-        //   dados: this.form
-        // }
+    async onSubmit(){
+      
+      let dados = {
+        "acima_4_profissionais": 0,
+        "acima_70_anos": 0,
+        "anestesia_geral": 1,
+        "asa_maior_2": 0,
+        "cirurgia_limpa": 0,
+        "cirurgia_videolaparoscopica": 1,
+        "duracao_acima_duas_horas": 1,
+        "duracao_cirurgia": 235,
+        "emergencia": 0,
+        "gravidade_asa": 2,
+        "hospital": 4,
+        "idade_anos": 42,
+        "iric": 0,
+        "mais_de_um_proc": 0,
+        "num_internacao": 1,
+        "num_procedimentos": 1,
+        "num_profissionais_bloco": 2,
+        "potencial_contaminacao": 4,
+        "primeira_internacao": 1,
+        "protese": 1,
+        "t_ate_cirurgia": 0,
+        "t_ate_maior_4": 0,
+        "tipo_cirurgia": 2,
+        "tipo_cuirurgia_especifica": 1
+      }
+
+      let data = await axios.post(`http://localhost:5000/buscar`, {
+        headers: {
+          'Access-Control-Allow-Credentials':true
+        },
+        body: this.form        
       })
-      .then(response => {
-        alert(response)
-        console.log(response)
-      })
-      .catch(e => {
-        alert(e)
-        console.log(e)
-      })
+      console.log(data)
+      alert(data.data)
     },
     onReset( evt ){
       evt.preventDefault()
