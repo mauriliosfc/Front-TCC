@@ -85,8 +85,8 @@
         <b-form-input v-model="form.hospital" id="nested-country"></b-form-input>
           </b-form-group>-->
         </b-form-group>
-        <button v-on:click="onSubmit()">Adiciona 1</button>
-        <!-- <b-button type="submit" variant="primary">Submit</b-button> -->
+        <!-- <button v-on:click="onSubmit()">Adiciona 1</button> -->
+        <b-button type="submit" variant="primary">Buscar</b-button>
         <b-button type="reset" variant="danger">Reset</b-button>
       </b-form>
     </b-card>
@@ -158,23 +158,22 @@ export default {
   },
   methods: {
     async onSubmit(evt) {
-      await axios
-        .post(`http://localhost:8080/buscar`, {
-          //await axios.post(`http://3.130.179.162:8080/buscar`, {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Content-Type": "application/json;charset=UTF-8"
-          },
-          body: this.form
-        })
-        .then(response => {
-          alert(response);
-          console.log(response);
-        })
-        .catch(e => {
-          alert(e);
-          console.log(e);
-        });
+      await axios.post(`http://localhost:8080/buscar`, {
+      //await axios.post(`http://3.130.179.162:8080/buscar`, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json;charset=UTF-8"
+        },
+        body: this.form
+      })
+      .then(response => {
+        alert("Possui IIC: "+response.data);
+        console.log(response);
+      })
+      .catch(e => {
+        alert(e);
+        console.log(e);
+      });
     },
     onReset(evt) {
       evt.preventDefault();
