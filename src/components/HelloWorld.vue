@@ -1,91 +1,101 @@
 <template>
   <div>
-    <b-card sm-5 bg-variant="light">
+    <b-card bg-variant="light">
       <b-form @submit="onSubmit" @reset="onReset">
-        <b-form-group label="Risco cirúrgico" label-size="lg" label-class="font-weight-bold ">
-          <b-form-group label="tipo_cuirurgia_especifica:">
-            <b-form-select v-model="form.tipo_cuirurgia_especifica" :options="tce_options"></b-form-select>
-          </b-form-group>
+        <b-form-group  label="Risco cirúrgico" label-size="lg" label-class="font-weight-bold ">
+          <div class="row">
+            <b-form-group class="col-md-6" label="tipo_cuirurgia_especifica:">
+              <b-form-select 
+                v-model="form.tipo_cuirurgia_especifica" 
+                :options="tce_options">
+              </b-form-select>
+            </b-form-group>
 
-          <b-form-group label="tipo_cirurgia:">
-            <b-form-select v-model="form.tipo_cirurgia" :options="Tipo_Cirurgia"></b-form-select>
-          </b-form-group>
+            <b-form-group class="col-md-6" label="tipo_cirurgia:">
+              <b-form-select 
+                v-model="form.tipo_cirurgia" 
+                :options="Tipo_Cirurgia">
+                </b-form-select>
+            </b-form-group>
+          
+            <b-form-group class="col-md-6" label="hospital:">
+              <b-form-select v-model="form.hospital" :options="Hospital"></b-form-select>
+            </b-form-group>
 
-          <b-form-group label="hospital:">
-            <b-form-select v-model="form.hospital" :options="Hospital"></b-form-select>
-          </b-form-group>
+            <b-form-group class="col-md-6" label="num_internacao:">
+              <b-form-input 
+                v-model="form.num_internacao" 
+                id="nested-country" 
+                type="number">
+              </b-form-input>
+            </b-form-group>
 
-          <b-form-group label="num_internacao:">
-            <b-form-input v-model="form.num_internacao" id="nested-country" type="number"></b-form-input>
-          </b-form-group>
+            <b-form-group class="col-md-6" label="idade_anos:">
+              <b-form-input 
+                v-model="form.idade_anos" 
+                id="nested-country" 
+                type="number">
+              </b-form-input>
+            </b-form-group>
 
-          <b-form-group label="idade_anos:">
-            <b-form-input v-model="form.idade_anos" id="nested-country" type="number"></b-form-input>
-          </b-form-group>
+            <b-form-group class="col-md-6" label="t_ate_cirurgia:">
+              <b-form-input v-model="form.t_ate_cirurgia" id="nested-country" type="number"></b-form-input>
+            </b-form-group>
 
-          <b-form-group label="t_ate_cirurgia:">
-            <b-form-input v-model="form.t_ate_cirurgia" id="nested-country" type="number"></b-form-input>
-          </b-form-group>
+            <b-form-group class="col-md-6" label="duracao_cirurgia:">
+              <b-form-input v-model="form.duracao_cirurgia" id="nested-country" type="number"></b-form-input>
+            </b-form-group>
 
-          <b-form-group label="duracao_cirurgia:">
-            <b-form-input v-model="form.duracao_cirurgia" id="nested-country" type="number"></b-form-input>
-          </b-form-group>
+            <b-form-group class="col-md-6" label="potencial_contaminacao:">
+              <b-form-select v-model="form.potencial_contaminacao" :options="pc_options    "></b-form-select>
+            </b-form-group>
 
-          <b-form-group label="potencial_contaminacao:">
-            <b-form-select v-model="form.potencial_contaminacao" :options="pc_options    "></b-form-select>
-          </b-form-group>
+            <b-form-group class="col-md-6" label="num_procedimentos:">
+              <b-form-input v-model="form.num_procedimentos" id="nested-country" type="number"></b-form-input>
+            </b-form-group>
 
-          <b-form-group label="num_procedimentos:">
-            <b-form-input v-model="form.num_procedimentos" id="nested-country" type="number"></b-form-input>
-          </b-form-group>
+            <b-form-group class="col-md-6" label="gravidade_asa:">
+              <b-form-input v-model="form.gravidade_asa" type="number"></b-form-input>
+            </b-form-group>
 
-          <b-form-group label="gravidade_asa:">
-            <b-form-input v-model="form.gravidade_asa" type="number"></b-form-input>
-          </b-form-group>
+            <b-form-group class="col-md-6" label="num_profissionais_bloco:">
+              <b-form-input v-model="form.num_profissionais_bloco" type="number"></b-form-input>
+            </b-form-group>          
+            <b-form-group class="col-md-6" >
+              <!-- <b-form-input v-model="form.num_profissionais_bloco" type="number"></b-form-input> -->
+            </b-form-group>          
 
-          <b-form-group label="num_profissionais_bloco:">
-            <b-form-input v-model="form.num_profissionais_bloco" type="number"></b-form-input>
-          </b-form-group>          
+            <b-form-group class="col-md-6" label="cirurgia_limpa:">
+              <input type="checkbox" v-model="form.cirurgia_limpa" true-value="1" false-value="0" />
+            </b-form-group>
 
-          <b-form-group label="cirurgia_limpa:">
-            <input type="checkbox" v-model="form.cirurgia_limpa" true-value="1" false-value="0" />
-          </b-form-group>
+            <b-form-group class="col-md-6" label="anestesia_geral:">
+              <input type="checkbox" v-model="form.anestesia_geral" true-value="1" false-value="0" />
+            </b-form-group>
 
-          <b-form-group label="anestesia_geral:">
-            <input type="checkbox" v-model="form.anestesia_geral" true-value="1" false-value="0" />
-          </b-form-group>
+            <b-form-group class="col-md-6" label="emergencia:">
+              <input type="checkbox" v-model="form.emergencia" true-value="1" false-value="0" />
+            </b-form-group>
 
-          <b-form-group label="emergencia:">
-            <input type="checkbox" v-model="form.emergencia" true-value="1" false-value="0" />
-          </b-form-group>
+            <b-form-group class="col-md-6" label="protese:">
+              <input type="checkbox" v-model="form.protese" true-value="1" false-value="0" />
+            </b-form-group>
 
-          <b-form-group label="protese:">
-            <input type="checkbox" v-model="form.protese" true-value="1" false-value="0" />
-          </b-form-group>
+            <b-form-group class="col-md-6" label="cirurgia_videolaparoscopica:">
+              <input
+                type="checkbox"
+                v-model="form.cirurgia_videolaparoscopica"
+                true-value="1"
+                false-value="0"
+              />
+            </b-form-group>
 
-          <b-form-group label="cirurgia_videolaparoscopica:">
-            <input
-              type="checkbox"
-              v-model="form.cirurgia_videolaparoscopica"
-              true-value="1"
-              false-value="0"
-            />
-          </b-form-group>
-
-          <b-form-group label="iric:">
-            <input type="checkbox" v-model="form.iric" true-value="1" false-value="0" />
-          </b-form-group>
-
-          <!-- <b-form-group
-
-        label="mais_de_um_proc:"
-
-
-      >
-        <b-form-input v-model="form.hospital" id="nested-country"></b-form-input>
-          </b-form-group>-->
+            <b-form-group class="col-md-6" label="iric:">
+              <input type="checkbox" v-model="form.iric" true-value="1" false-value="0" />
+            </b-form-group>
+          </div>
         </b-form-group>
-        <!-- <button v-on:click="onSubmit()">Adiciona 1</button> -->
+
         <b-button type="submit" variant="primary">Buscar</b-button>
         <b-button type="reset" variant="danger">Reset</b-button>
       </b-form>
