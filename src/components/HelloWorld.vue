@@ -237,7 +237,7 @@ export default {
         body: this.form
       })
       .then(response => {
-        alert("Possui IIC: "+response.data);
+        alert("Possui IIC: "+(response.data == 0 ? 'Sim' : 'nao' ));
         this.$awn.success('Sucesso')
       })
       .catch(e => {
