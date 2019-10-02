@@ -2,7 +2,11 @@
   <div>
     <b-card bg-variant="light">
       <b-form @submit="onSubmit" @reset="onReset">
-        <b-form-group  label="Risco cirúrgico" label-size="lg" label-class="font-weight-bold ">
+        <b-form-group  
+          label="Risco cirúrgico" 
+          label-size="lg" 
+          label-class="font-weight-bold "
+        >
           <div class="row">
             <b-form-group class="col-md-6" label="tipo_cuirurgia_especifica:">
               <b-form-select 
@@ -39,7 +43,11 @@
             </b-form-group>
 
             <b-form-group class="col-md-6" label="t_ate_cirurgia:">
-              <b-form-input v-model="form.t_ate_cirurgia" id="nested-country" type="number"></b-form-input>
+              <b-form-input 
+                v-model="form.t_ate_cirurgia" 
+                id="nested-country" 
+                type="number">
+              </b-form-input>
             </b-form-group>
 
             <b-form-group class="col-md-6" label="duracao_cirurgia:">
@@ -104,7 +112,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "axios"
 
 export default {
   name: "HelloWorld",
@@ -116,19 +124,26 @@ export default {
         tipo_cirurgia: "",
         hospital: "",
         num_internacao: "",
+        primeira_internacao: "",
         idade_anos: "",
+        acima_70_anos: "",
         t_ate_cirurgia: "",
+        T_Ate_Maior_4: "",
         duracao_cirurgia: "",
+        Duracao_Acima_Duas_Horas: "",
         potencial_contaminacao: "",
-        num_procedimentos: "",
-        gravidade_asa: "",
-        num_profissionais_bloco: "",
         cirurgia_limpa: "0",
         anestesia_geral: "0",
-        emergencia: "0",
+        emergencia: "0",        
+        gravidade_asa: "",
+        ASA_Maior_2: "",
         protese: "0",
         cirurgia_videolaparoscopica: "0",
-        iric: "0"
+        iric: "0",
+        num_procedimentos: "",
+        Mais_de_Um_Proc: "",
+        num_profissionais_bloco: "",
+        Acima_4_Profissionais: ""        
       },
       tce_options: [
         { value: 1, text: "Laparotomia exploradora – videolaparoscópica" },
@@ -167,7 +182,52 @@ export default {
     };
   },
   methods: {
-    async onSubmit(evt) {
+    validaCampos(){
+     if(Number(this.form.num_internacao) == 1){
+        this.form.primeira_internacao = '1'
+      }else {
+        this.form.primeira_internacao = '0'
+      }
+      
+      if(Number(this.form.idade_anos) >= 70){
+        this.form.acima_70_anos = '1'
+      }else {
+        this.form.acima_70_anos = '0'
+      }
+      
+      if(Number(this.form.t_ate_cirurgia) > 4){
+        this.form.T_Ate_Maior_4 = '1'
+      }else {
+        this.form.T_Ate_Maior_4 = '0'
+      }
+      
+      if(Number(this.form.duracao_cirurgia) > 2){
+        this.form.Duracao_Acima_Duas_Horas = '1'
+      }else {
+        this.form.Duracao_Acima_Duas_Horas = '0'
+      }
+      
+      if(Number(this.form.gravidade_asa) > 2 ){
+        this.form.ASA_Maior_2 = '1'
+      }else {
+        this.form.ASA_Maior_2 = '0'
+      }
+      
+      if(Number(this.form.num_procedimentos) > 1){
+        this.form.Mais_de_Um_Proc = '1'
+      }else {
+        this.form.Mais_de_Um_Proc = '0'
+      }
+      
+      if(Number(this.form.num_profissionais_bloco) > 4){
+        this.form.Acima_4_Profissionais = '1'
+      }else {
+        this.form.Acima_4_Profissionais = '0'
+      }
+    },
+    async onSubmit(evt) {     
+      this.validaCampos()     
+      console.log(this.form)
       await axios.post(`http://localhost:8080/buscar`, {
       //await axios.post(`http://3.130.179.162:8080/buscar`, {
         headers: {
@@ -178,11 +238,11 @@ export default {
       })
       .then(response => {
         alert("Possui IIC: "+response.data);
-        console.log(response);
+        this.$awn.success('Sucesso')
       })
       .catch(e => {
         alert(e);
-        console.log(e);
+        this.$awn.alert('Erro')
       });
     },
     onReset(evt) {

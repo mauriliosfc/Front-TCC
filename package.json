@@ -15,6 +15,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "awesome-notifications": "^3.0.3",
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.1",

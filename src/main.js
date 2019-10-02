@@ -6,11 +6,13 @@ import router from './router'
 import BootstrapVue from 'bootstrap-vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import VueAWN from 'vue-awesome-notifications'
+
 Vue.use(VueAxios, axios)
 
-var VueResource = require('vue-resource');
-
-Vue.use(VueResource);
+var VueResource = require('vue-resource')
+Vue.use(VueAWN)
+Vue.use(VueResource)
 
 
 import 'bootstrap/dist/css/bootstrap.css'
