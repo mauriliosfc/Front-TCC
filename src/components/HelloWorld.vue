@@ -237,7 +237,7 @@ export default {
         body: this.form
       })
       .then(response => {
-        alert("Possui IIC: "+(response.data == 0 ? 'Sim' : 'nao' ));
+        alert("Probabilidade de infecção: "+parseFloat(response.data).toFixed(4)*100+"%");
         this.$awn.success('Sucesso')
       })
       .catch(e => {
