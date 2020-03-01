@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <!-- <v-app>
     <v-app-bar app color="primary" dark>
       <div class="d-flex align-center">
         <v-img
@@ -29,18 +29,18 @@
       </v-btn>
     </v-app-bar>
 
-    <v-content>
-      <HelloWorld />
-    </v-content>
-  </v-app>
+  <v-content>-->
+  <Consult />
+  <!-- </v-content>
+  </v-app>-->
 </template>
 
 <script>
-import HelloWorld from "./HelloWorld";
+import Consult from "./Consult";
 
 export default {
   components: {
-    HelloWorld
+    Consult
   },
 
   data: () => ({
