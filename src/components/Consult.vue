@@ -297,9 +297,10 @@ export default {
     async onSubmit() {
       this.validaCampos();
       console.log(this.form);
+      // await axios
+      //   .post(`http://localhost:8080/buscar`, {
       await axios
-        .post(`http://localhost:8080/buscar`, {
-          //await axios.post(`http://3.130.179.162:8080/buscar`, {
+        .post(`http://52.44.99.70:5001/buscar`, {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Content-Type": "application/json;charset=UTF-8"
