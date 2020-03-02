@@ -3,7 +3,7 @@ import vuetify from './plugins/vuetify';
 import router from './router'
 import App from './App.vue'
 import * as firebase from "firebase";
-
+import store from "./store";
 
 Vue.config.productionTip = false
 
@@ -20,9 +20,13 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 
+firebase.auth().onAuthStateChanged(user => {
+  store.dispatch("fetchUser", user);
+});
+
 new Vue({
   vuetify,
   router,
-  firebase,
+  store,
   render: h => h(App)
 }).$mount('#app')
