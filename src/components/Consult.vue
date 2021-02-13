@@ -300,7 +300,7 @@ export default {
       // await axios
       //   .post(`http://localhost:8080/buscar`, {
       await axios
-        .post(`http://52.44.99.70:5001/buscar`, {
+        .post(`http://3.22.227.102:5001/buscar`, {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Content-Type": "application/json;charset=UTF-8"
