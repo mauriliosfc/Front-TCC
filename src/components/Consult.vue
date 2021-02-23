@@ -209,7 +209,7 @@ export default {
         num_procedimentos: "",
         Mais_de_Um_Proc: "",
         num_profissionais_bloco: "",
-        Acima_4_Profissionais: ""
+        Acima_4_Profissionais: "",
       },
       tce_options: [
         { value: 1, text: "Laparotomia exploradora – videolaparoscópica" },
@@ -222,32 +222,32 @@ export default {
         { value: 8, text: "Cirurgia de cólon" },
         { value: 9, text: "Apendicectomia – videolaparoscópica" },
         { value: 1, text: "Apendicectomia" },
-        { value: "d", text: "This one is disabled", disabled: true }
+        { value: "d", text: "This one is disabled", disabled: true },
       ],
       pc_options: [
         { value: 1, text: "Limpa" },
         { value: 2, text: "Contaminada" },
         { value: 3, text: "Infectada" },
-        { value: 4, text: "Potencialmente Contaminada" }
+        { value: 4, text: "Potencialmente Contaminada" },
       ],
       Tipo_Cirurgia: [
         { value: 1, text: "Apendicectomia" },
         { value: 2, text: "Laparotomia exploradora" },
         { value: 3, text: "Herniorrafia" },
         { value: 4, text: "Colecistectomia" },
-        { value: 5, text: "Cirurgia de cólo" }
+        { value: 5, text: "Cirurgia de cólo" },
       ],
       Hospital: [
         { value: 1, text: "B" },
         { value: 2, text: "D" },
         { value: 3, text: "E" },
         { value: 4, text: "F" },
-        { value: 5, text: "G" }
+        { value: 5, text: "G" },
       ],
       boolena_options: [
         { value: 0, text: "Não" },
-        { value: 1, text: "Sim" }
-      ]
+        { value: 1, text: "Sim" },
+      ],
     };
   },
   methods: {
@@ -297,17 +297,17 @@ export default {
     async onSubmit() {
       this.validaCampos();
       console.log(this.form);
-      await axios
-        .post(`http://localhost:5001/buscar`, {
       // await axios
-      //   .post(`https://api.infectioninsurgicalsites.com/buscar`, {
+      //   .post(`http://localhost:5001/buscar`, {
+      await axios
+        .post(`https://api.infectioninsurgicalsites.com/buscar`, {
           headers: {
             "Access-Control-Allow-Origin": "*",
-            "Content-Type": "application/json;charset=UTF-8"
+            "Content-Type": "application/json;charset=UTF-8",
           },
-          body: this.form
+          body: this.form,
         })
-        .then(response => {
+        .then((response) => {
           alert(
             "Probabilidade de infecção: " +
               parseFloat(response.data).toFixed(4) * 100 +
@@ -315,7 +315,7 @@ export default {
           );
           this.$awn.success("Sucesso");
         })
-        .catch(e => {
+        .catch((e) => {
           console.log(e);
           this.$awn.alert("Erro");
         });
@@ -332,8 +332,8 @@ export default {
       this.$nextTick(() => {
         this.show = true;
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
