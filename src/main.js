@@ -4,6 +4,27 @@ import router from './router'
 import App from './App.vue'
 import * as firebase from "firebase";
 import store from "./store";
+import VueAWN from "vue-awesome-notifications"
+
+let options = {
+  labels: {
+    success: "Sucesso",
+    warning: "Aviso",
+    alert: "Erro",
+    info: "Info",
+    confirm: "É necessário confirmar"
+  },
+  modal: {
+    confirm: "É necessário confirmar",
+    okLabel: "Sim",
+    cancelLabel: "Não"
+  },
+  position: "top-right",
+  animationDuration: 200,
+  maxNotifications: 5
+}
+
+Vue.use(VueAWN, options);
 
 Vue.config.productionTip = false
 

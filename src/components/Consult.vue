@@ -297,10 +297,10 @@ export default {
     async onSubmit() {
       this.validaCampos();
       console.log(this.form);
-      // await axios
-      //   .post(`http://localhost:8080/buscar`, {
       await axios
-        .post(`https://api.infectioninsurgicalsites.com/buscar`, {
+        .post(`http://localhost:5001/buscar`, {
+      // await axios
+      //   .post(`https://api.infectioninsurgicalsites.com/buscar`, {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Content-Type": "application/json;charset=UTF-8"
@@ -316,7 +316,7 @@ export default {
           this.$awn.success("Sucesso");
         })
         .catch(e => {
-          alert(e);
+          console.log(e);
           this.$awn.alert("Erro");
         });
     },

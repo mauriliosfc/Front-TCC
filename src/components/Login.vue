@@ -42,7 +42,7 @@ export default {
   data() {
     return {
       password: null,
-      email: null
+      email: null,
     };
   },
   methods: {
@@ -54,7 +54,7 @@ export default {
           this.$router.replace("home");
         })
         .catch(err => {
-          this.error = err.message;
+          this.$awn.alert(err.message)
         });
     },
     register() {
