@@ -29,12 +29,12 @@ export default new Router({
         },
         {
             name: 'welcome',
-            path: '/welcome',
+            path: '/',
             component: Welcome
         },
         {
             name: 'login',
-            path: '/',
+            path: '/login',
             component: Login
         },
         {
