@@ -10,7 +10,7 @@
         <button @click="goTuDescription" class="button1">
           <span>FERRAMENTA DA ISC</span>
         </button>
-        <button class="button2"><span>APLICATIVOS CIENTIFICOS</span></button>
+        <button @click="goToApps" class="button2"><span>APLICATIVOS CIENTIFICOS</span></button>
       </div>
     </div>
     <div id="rodape">
@@ -30,6 +30,11 @@ export default {
     goTuDescription() {
       this.$router.replace({
         name: "descricao",
+      });
+    },
+    goToApps() {
+      this.$router.replace({
+        name: "apps",
       });
     },
   },
