@@ -55,7 +55,7 @@
         <img src="../assets/n.png" alt="NOIS" />
       </div>
       <div class="copyright">
-        Copyright© 2021  Todos os direitos reservados.
+        Copyright© 2021 Nois, Todos os direitos reservados.
       </div>
     </div>
     <button @click="goTuDescription" class="btartigo">
