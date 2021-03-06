@@ -51,7 +51,7 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(() => {
-          this.$router.replace("home");
+          this.$router.replace("Consult");
         })
         .catch(err => {
           this.$awn.alert(err.message)
