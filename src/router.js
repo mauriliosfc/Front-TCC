@@ -7,10 +7,16 @@ import Apps from './components/Apps'
 import Welcome from './components/welcome'
 import Descricao from './components/descricao'
 import Timeline from './components/timeline'
+import Consult from './components/Consult'
 Vue.use(VueRouter)
 
 export default new Router({
     routes: [
+        {
+            name: 'Consult',
+            path: '/consult',
+            component: Consult
+        },
         {
             name: 'timeline',
             path: '/timeline',
