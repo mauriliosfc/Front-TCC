@@ -5,6 +5,9 @@ import App from './App.vue'
 import * as firebase from "firebase";
 import store from "./store";
 import VueAWN from "vue-awesome-notifications"
+import VueHorizontalTimeline from "vue-horizontal-timeline";
+
+Vue.use(VueHorizontalTimeline);
 
 let options = {
   labels: {

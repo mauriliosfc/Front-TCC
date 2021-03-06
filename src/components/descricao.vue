@@ -55,7 +55,7 @@
         <img src="../assets/n.png" alt="NOIS" />
       </div>
       <div class="copyright">
-        Copyright© 2021  Todos os direitos reservados.
+        Copyright© 2021 Nois, Todos os direitos reservados.
       </div>
     </div>
     <button @click="goTuDescription" class="btartigo">
@@ -156,7 +156,7 @@ a:link {
   margin: 10px;
   position: relative;
   float: right;
-  font-size: 15px;
+  font-size: 13px;
 }
 .coluna2 {
   width: 400px;
@@ -165,7 +165,7 @@ a:link {
   margin: 10px;
   position: relative;
   float: right;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .coluna3 {
@@ -175,7 +175,7 @@ a:link {
   margin: 10px;
   position: relative;
   float: right;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 p {
