@@ -156,7 +156,7 @@ a:link {
   margin: 10px;
   position: relative;
   float: right;
-  font-size: 15px;
+  font-size: 13px;
 }
 .coluna2 {
   width: 400px;
@@ -165,7 +165,7 @@ a:link {
   margin: 10px;
   position: relative;
   float: right;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .coluna3 {
@@ -175,7 +175,7 @@ a:link {
   margin: 10px;
   position: relative;
   float: right;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 p {
