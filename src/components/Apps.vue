@@ -37,7 +37,7 @@
             <v-list-item-content>    
               <div class="overline mb-4">
                 <b>Artigo científico:</b> PATTERN RECOGNITION ALGORITHMS FOR THE SURVEY OF CRITICAL PROBABILITY OF INFECTION IN SURGICAL SITES
-                <br><b>Congresso: Decennial 2020</b>
+                <br><b>Congresso:</b> Decennial 2020
                 <br><b>ANO:</b> 2020  
               </div>
             </v-list-item-content>
