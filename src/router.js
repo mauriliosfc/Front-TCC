@@ -5,10 +5,16 @@ import Login from './components/Login'
 import Home from './components/Home'
 import Welcome from './components/welcome'
 import Descricao from './components/descricao'
+import Timeline from './components/timeline'
 Vue.use(VueRouter)
 
 export default new Router({
     routes: [
+        {
+            name: 'timeline',
+            path: '/timeline',
+            component: Timeline
+        },
         {
             name: 'descricao',
             path: '/descricao',

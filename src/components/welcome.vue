@@ -28,9 +28,9 @@
 export default {
   methods: {
     goTuDescription() {
-          this.$router.replace({
-            name: "descricao",
-          });
+      this.$router.replace({
+        name: "descricao",
+      });
     },
   },
 };
@@ -134,5 +134,7 @@ a:link {
 }
 .copyright {
   text-align: center;
+  color: white;
+  font-size: 10px;
 }
 </style>
