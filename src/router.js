@@ -8,10 +8,16 @@ import Welcome from './components/welcome'
 import Descricao from './components/descricao'
 import Timeline from './components/timeline'
 import Consult from './components/Consult'
+import Contato from './components/contato'
 Vue.use(VueRouter)
 
 export default new Router({
     routes: [
+        {
+            name: 'contato',
+            path: '/contato',
+            component: Contato
+        },
         {
             name: 'Consult',
             path: '/consult',

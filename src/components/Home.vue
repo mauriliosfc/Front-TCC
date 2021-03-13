@@ -49,6 +49,7 @@ h1 {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  color: rgb(212, 212, 212);
 }
 .meio {
   position: absolute;

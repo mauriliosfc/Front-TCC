@@ -7,6 +7,7 @@
     </div>
     <div id="meio">
       <div id="conteudo">
+
         <div class="coluna1">
           <h1>Descritivo da Ferramenta</h1>
           <p>
@@ -57,10 +58,13 @@
       <div class="copyright">
         Copyright© 2021 Nois, Todos os direitos reservados.
       </div>
+      <button @click="goTuDescription" class="btartigo1">
+        <span>ARTIGOS</span>
+      </button>
+      <button @click="goTuContato" class="btartigo2">
+        <span>CONTATAO</span>
+      </button>
     </div>
-    <button @click="goTuDescription" class="btartigo">
-      <span>ARTIGOS</span>
-    </button>
   </div>
 </template>
 
@@ -72,14 +76,16 @@ export default {
         name: "timeline",
       });
     },
+    goTuContato() {
+      this.$router.replace({
+        name: "contato",
+      });
+    },
   },
 };
 </script>
 
 <style>
-template {
-  background: red;
-}
 h1 {
   color: #3072b9;
 }
@@ -88,10 +94,11 @@ h2 {
 }
 #painel {
   width: 100%;
-  height: 13 130px;
+  height: 150px;
   background: white;
   box-shadow: 0px 0.1px 5px rgb(95, 95, 95);
-  position: absolute;
+  position: fixed;
+  z-index: 9999;
 }
 img {
   display: block;
@@ -103,10 +110,13 @@ h1 {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  color: #3072b9;
 }
 .meio {
   position: absolute;
-  background: #426d9b;
+  align-items: center;
+  display: table; 
+
 }
 
 #conteudo {
@@ -116,7 +126,8 @@ h1 {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  display: table-cell; 
+  vertical-align: middle;
 }
 
 #geral {
@@ -127,9 +138,10 @@ h1 {
 #rodape {
   width: 100%;
   background: rgb(51, 51, 51);
-  position: absolute;
   bottom: 0;
   box-shadow: 0px 0px 1px rgb(95, 95, 95);
+  position: fixed;
+  z-index: 9999;
 }
 a {
   margin: 10px;
@@ -144,38 +156,40 @@ a:link {
   margin-right: auto;
   margin-top: 05px;
 }
-.copyright {
-  text-align: center;
-  color: white;
-  font-size: 10px;
-}
 .coluna1 {
-  width: 400px;
+  top: 0px;
+  width: 98%;
   text-align: justify;
-  float: left;
-  margin: 10px;
   position: relative;
-  float: right;
   font-size: 13px;
+  background-color: rgb(219, 226, 255);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 5px;
+  opacity: 0.9;
 }
 .coluna2 {
-  width: 400px;
+  width: 98%;
   text-align: justify;
-  float: left;
-  margin: 10px;
   position: relative;
-  float: right;
   font-size: 13px;
+  background-color: rgb(219, 226, 255);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 5px;
+  opacity: 0.9;
 }
 
 .coluna3 {
-  width: 400px;
+  width: 98%;
   text-align: justify;
-  float: left;
-  margin: 10px;
   position: relative;
-  float: right;
   font-size: 13px;
+  background-color: rgb(219, 226, 255);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 5px;
+  opacity: 0.9;
 }
 
 p {
@@ -183,22 +197,48 @@ p {
   color: black;
 }
 
-.btartigo {
+.btartigo1 {
   background-color: #3072b9;
-  width: 250px;
-  height: 50px;
+  width: 210px;
+  height: 45px;
   border-radius: 5px;
-  opacity: 1;
-  float: right;
-  margin: 10px;
   font-size: 2em;
   color: #fff;
-  background-color: #3072b9;
-  border-bottom: 2px solid #3072b9;
   opacity: 0.8;
   filter: alpha(opacity=90);
   font-size: 15px;
   color: white;
+  position: absolute;
+  bottom: 0;
+  z-index: 50;
+  top: 11%;
+  right: 215px;
+  float: right;
+  margin-right: 5px;
+}
+.btartigo2 {
+  background-color: #fa4747;
+  width: 210px;
+  height: 45px;
+  border-radius: 5px;
+  font-size: 2em;
+  color: #fff;
+  opacity: 0.8;
+  filter: alpha(opacity=90);
+  font-size: 15px;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  z-index: 50;
+  top: 11%;
+  right: 0;
+  float: right;
+  margin-right: 5px;
+}
+.copyright {
+  text-align: center;
+  color: white;
+  font-size: 10px;
 }
 </style>
 
