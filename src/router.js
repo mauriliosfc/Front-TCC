@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import Vuetify from 'vuetify'
 import VueRouter from 'vue-router'
 import Router from 'vue-router'
 import Login from './components/Login'

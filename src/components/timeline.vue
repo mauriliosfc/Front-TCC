@@ -279,7 +279,7 @@
             </v-avatar>
           </template>
           <template v-slot:opposite>
-            <span>IDWEEK 2020</span>
+            <span>IDWEEK 2020 </span>
           </template>
           <v-card class="elevation-2">
             <v-card-title class="headline">18º Artigo publicado</v-card-title>
