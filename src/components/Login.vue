@@ -51,7 +51,7 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(() => {
-          this.$router.replace("home");
+          this.$router.replace("consult");
         })
         .catch(err => {
           this.$awn.alert(err.message)
@@ -62,7 +62,7 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(() => {
-          this.$router.replace("home");
+          this.$router.replace("consult");
         })
         .catch(err => {
           alert(err.message);
@@ -73,4 +73,10 @@ export default {
 </script>
 
 <style>
+#inspire{
+  position: relative;
+  background-image: url(../assets/celebro.png);
+  background-size: cover;
+}
+
 </style>

@@ -1,6 +1,9 @@
 <template>
   <div id="geral">
     <div id="painel">
+      <button @click="goTuLogin" class="btnLogin">
+        <span>LOGIN</span>
+      </button>
       <img src="../assets/nois.png" alt="NOIS" />
       <h1>BEM VINDO, NOIS É FODA</h1>
       <!--<img v-bind:src="foto.url" v-bind:alt="foto.titulo">-->
@@ -81,6 +84,11 @@ export default {
         name: "contato",
       });
     },
+    goTuLogin() {
+      this.$router.replace({
+        name: "login",
+      });
+    },
   },
 };
 </script>
@@ -118,7 +126,25 @@ h1 {
   display: table; 
 
 }
-
+.btnLogin{
+  background-color: #005fc4;
+  width: 210px;
+  height: 45px;
+  border-radius: 5px;
+  font-size: 2em;
+  color: #fff;
+  opacity: 0.8;
+  filter: alpha(opacity=90);
+  font-size: 15px;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  z-index: 50;
+  top: 5%;
+  right: 0;
+  float: right;
+  margin-right: 5px;
+}
 #conteudo {
   width: 100vw;
   height: 100vh;
