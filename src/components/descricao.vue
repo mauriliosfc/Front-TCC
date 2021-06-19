@@ -64,8 +64,11 @@
       <button @click="goTuDescription" class="btartigo1">
         <span>ARTIGOS</span>
       </button>
-      <button @click="goTuContato" class="btartigo2">
-        <span>CONTATAO</span>
+      <button @click="goTuContato" class="btcontatos">
+        <span>CONTATOS</span>
+      </button>
+      <button @click="goTuEstatiticas" class="btestatiticas">
+        <span>DADOS E ESTATÍSTICAS</span>
       </button>
     </div>
   </div>
@@ -82,6 +85,11 @@ export default {
     goTuContato() {
       this.$router.replace({
         name: "contato",
+      });
+    },
+    goTuEstatiticas() {
+      this.$router.replace({
+        name: "Estatiticas",
       });
     },
     goTuLogin() {
@@ -242,7 +250,7 @@ p {
   float: right;
   margin-right: 5px;
 }
-.btartigo2 {
+.btcontatos {
   background-color: #fa4747;
   width: 210px;
   height: 45px;
@@ -258,6 +266,25 @@ p {
   z-index: 50;
   top: 11%;
   right: 0;
+  float: right;
+  margin-right: 5px;
+}
+.btestatiticas {
+  background-color: #696969;
+  width: 210px;
+  height: 45px;
+  border-radius: 5px;
+  font-size: 2em;
+  color: #fff;
+  opacity: 0.8;
+  filter: alpha(opacity=90);
+  font-size: 15px;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  z-index: 50;
+  top: 11%;
+  right: 430px;
   float: right;
   margin-right: 5px;
 }

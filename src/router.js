@@ -9,12 +9,12 @@ import Descricao from './components/descricao'
 import Timeline from './components/timeline'
 import Consult from './components/Consult'
 import Contato from './components/contato'
+import Estatiticas from './components/estatiticas'
 Vue.use(VueRouter)
 
 
 export default new Router({
-    routes: [
-        {
+    routes: [{
             name: 'contato',
             path: '/contato',
             component: Contato
@@ -23,6 +23,11 @@ export default new Router({
             name: 'Consult',
             path: '/consult',
             component: Consult
+        },
+        {
+            name: 'Estatiticas',
+            path: '/estatiticas',
+            component: Estatiticas
         },
         {
             name: 'timeline',
@@ -48,7 +53,7 @@ export default new Router({
             name: 'apps',
             path: '/apps',
             component: Apps
-        },       
+        },
         {
             name: 'home',
             path: '/home',
