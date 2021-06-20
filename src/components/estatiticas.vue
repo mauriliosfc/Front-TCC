@@ -3,7 +3,7 @@
   <v-app id="inspire">
     <v-container fluid>
         <div class="text-h6 mb-1">
-            DADOS E ESTATÍSTICAS
+            ESTATÍSTICAS E Dados
           </div>
       <v-row justify="space-around">
         <v-col cols="5">

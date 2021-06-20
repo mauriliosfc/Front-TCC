@@ -10,6 +10,7 @@ import Timeline from './components/timeline'
 import Consult from './components/Consult'
 import Contato from './components/contato'
 import Estatiticas from './components/estatiticas'
+
 Vue.use(VueRouter)
 
 

@@ -68,7 +68,7 @@
         <span>CONTATOS</span>
       </button>
       <button @click="goTuEstatiticas" class="btestatiticas">
-        <span>DADOS E ESTATÍSTICAS</span>
+        <span>ESTATÍSTICAS E DADOS</span>
       </button>
     </div>
   </div>
