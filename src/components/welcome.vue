@@ -1,6 +1,15 @@
 <template>
   <div id="geral">
     <div id="painel">
+      <div id="combobox">
+       <v-combobox @change="setLanguage()" 
+              v-model='language'
+              :items='languages'
+              label='Language'
+              :auto-select-first='true'
+              v-on:change='onChange'
+            ></v-combobox>
+        </div>    
       <img src="../assets/nois.png" alt="NOIS" />
       <h1>BEM VINDO, NOIS É FODA</h1>
       <!--<img v-bind:src="foto.url" v-bind:alt="foto.titulo">-->
@@ -8,7 +17,8 @@
     <div id="meio">
       <div id="buttongeral">
         <button @click="goTuDescription" class="button1">
-          <span>FERRAMENTA DA ISC</span>
+          <span class="en">FERRAMENTA ISC</span>
+          <span class="pt">TOOLS ISC</span>
         </button>
         <button @click="goToApps" class="button2"><span>APLICATIVOS CIENTIFICOS</span></button>
       </div>
@@ -26,7 +36,23 @@
 
 <script>
 export default {
+  data() {
+    return {
+      language: 'English',
+      languages: [
+        'English',
+        'Portuguese'
+      ]
+    }
+  },
   methods: {
+    setLanguage() {
+      if(this.language == "English"){
+          console.log("English")
+      }else{
+          console.log("Portuguese")
+      }
+    },
     goTuDescription() {
       this.$router.replace({
         name: "descricao",
@@ -54,6 +80,12 @@ h1 {
   background: white;
   box-shadow: 0px 0.1px 5px rgb(95, 95, 95);
   position: absolute;
+}
+#combobox{
+  width: 110px;
+  height: 50px;
+  position: absolute;
+  right: 0 px;
 }
 img {
   display: block;
