@@ -2,16 +2,17 @@
   <div id="geral">
     <div id="painel">
       <div id="combobox">
-       <v-combobox @change="setLanguage()" 
-              v-model='language'
-              :items='languages'
-              label='Language'
-              :auto-select-first='true'
-              v-on:change='onChange'
-            ></v-combobox>
-        </div>    
+        <v-combobox
+          @change="setLanguage()"
+          v-model="language"
+          :items="languages"
+          label="Language"
+          :auto-select-first="true"
+          v-on:change="onChange"
+        ></v-combobox>
+      </div>
       <img src="../assets/nois.png" alt="NOIS" />
-      <h1>{{text.welcome}}</h1>
+      <h1>{{ text.welcome }}</h1>
       <!--<img v-bind:src="foto.url" v-bind:alt="foto.titulo">-->
     </div>
     <div id="meio">
@@ -20,8 +21,8 @@
           <span>{{ text.tools }}</span>
         </button>
         <button @click="goToApps" class="button2">
-          <span>{{text.app}}</span>
-          </button>
+          <span>{{ text.app }}</span>
+        </button>
       </div>
     </div>
     <div id="rodape">
@@ -29,7 +30,7 @@
         <img src="../assets/n.png" alt="NOIS" />
       </div>
       <div class="copyright">
-        <span>Copyright© 2021 Nois, Todos os direitos reservados.</span>
+        <span>{{ text.copyright }}</span>
       </div>
     </div>
   </div>
@@ -39,40 +40,39 @@ var store = require('store')
 export default {
   data() {
     return {
-      language: '',
-      languages: [        
-        'Portuguese',
-        'English'
-      ],      
-      pt : { 
-        tools: 'FERRAMENTA ISC', 
-        app: 'APLICATIVOS CIENTIFICOS',
-        welcome: 'BEM-VINDO AO GRUPO NOIS'
-      }, 
-      eng : { 
-        tools: 'TOOLS ISC',
-        app: 'SCIENTIFIC APPLICATIONS',
-        welcome: 'WELCOME TO GROUP NOIS'
-      },      
+      language: "",
+      languages: ["Português", "English"],
+      pt: {
+        tools: "FERRAMENTA ISC",
+        app: "APLICATIVOS CIENTIFICOS",
+        welcome: "BEM-VINDO AO GRUPO NOIS",
+        copyright: "Copyright© 2021 Nois, Todos os direitos reservados.",
+      },
+      eng: {
+        tools: "TOOLS ISC",
+        app: "SCIENTIFIC APPLICATIONS",
+        welcome: "WELCOME TO GROUP NOIS",
+        copyright: "Copyright © 2021 Nois, All rights reserved.",
+      },
       text: {},
-    }
+    };
   },
-  beforeMount(){    
+  beforeMount() {
     this.setStorage();
     this.setLanguage();
- },
-  methods: {    
+  },
+  methods: {
     setStorage() {
-      if(sessionStorage.getItem('language') == null){
-        sessionStorage.setItem('language', 'English');
+      if (sessionStorage.getItem("language") == null) {
+        sessionStorage.setItem("language", "English");
       }
-      this.language = sessionStorage.getItem('language');
+      this.language = sessionStorage.getItem("language");
     },
     setLanguage() {
-      sessionStorage.setItem('language', this.language);            
-      if(sessionStorage.getItem('language') == "English"){
+      sessionStorage.setItem("language", this.language);
+      if (sessionStorage.getItem("language") == "English") {
         this.text = this.eng;
-      }else{
+      } else {
         this.text = this.pt;
       }
     },
@@ -104,7 +104,7 @@ h1 {
   box-shadow: 0px 0.1px 5px rgb(95, 95, 95);
   position: absolute;
 }
-#combobox{
+#combobox {
   width: 110px;
   height: 50px;
   position: absolute;

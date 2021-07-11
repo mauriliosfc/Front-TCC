@@ -2,8 +2,19 @@
   <div id="fundo">
     <div id="principal">
       <div id="esquerda">
+        <div id="comboboxContatos">
+          <v-combobox
+            @change="setLanguage()"
+            v-model="language"
+            :items="languages"
+            label="Language"
+            :auto-select-first="true"
+            v-on:change="onChange"
+          ></v-combobox>
+        </div>
         <p id="p1">
-          <span id="span1">PROJETO ISC E-MAILS PARA CONTATO:</span><br /><br />
+          <span id="span1">{{ text.titulo }}</span
+          ><br /><br />
           Gustavo Maciel Pimenta -
           <a href="gustavomacielp432@gmail.com">gustavomacielp432@gmail.com</a>
           <br />
@@ -32,7 +43,41 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      language: 'English',
+      languages: ['Português', 'English'],
+      pt: {
+        titulo: 'PROJETO ISC E-MAILS PARA CONTATO:',
+      },
+      eng: {
+        titulo: 'ISC PROJECT CONTACT EMAILS:',
+      },
+      text: {},
+    };
+  },
+  beforeMount() {
+    this.setStorage();
+    this.setLanguage();
+  },
+  methods: {
+    setStorage() {
+      if (sessionStorage.getItem("language") == null) {
+        sessionStorage.setItem("language", "English");
+      }
+      this.language = sessionStorage.getItem("language");
+    },
+    setLanguage() {
+      sessionStorage.setItem("language", this.language);
+      if (sessionStorage.getItem("language") == "English") {
+        this.text = this.eng;
+      } else {
+        this.text = this.pt;
+      }
+    },
+  },
+};
 </script>
 
 <style>
@@ -101,5 +146,9 @@ export default {};
   font-family: "Courier New", Courier, monospace;
   font-size: 25px;
   color: rgb(41, 41, 41);
+}
+#comboboxContatos {
+  width: 110px;
+  height: 50px;
 }
 </style>
