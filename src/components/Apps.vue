@@ -45,7 +45,7 @@
           <v-list-item three-line>
             <v-list-item-content>    
               <div class="overline mb-4">
-                <b>{{text.article}}:</b> PATTERN RECOGNITION ALGORITHMS FOR THE SURVEY OF CRITICAL PROBABILITY OF INFECTION IN SURGICAL SITES
+                <b>{{text.article}}:</b> {{text.descricao}}
                 <br><b>{{text.congress}}:</b> Decennial 2020
                 <br><b>{{text.year}}:</b> 2020  
               </div>
@@ -58,14 +58,14 @@
               rounded
               text
             >
-              Artigo científico
+              {{ text.artigo }}
             </v-btn>
             <v-btn
               outlined
               rounded
               text
             >
-              Baixe agora
+              {{ text.download }}
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -76,7 +76,7 @@
         <img src="../assets/n.png" alt="NOIS" />
       </div>
       <div class="copyright">
-        Copyright© 2021 Nois, Todos os direitos reservados.
+        <span>{{ text.copyright }}</span>
       </div>
     </div>
   </div>
@@ -100,13 +100,21 @@ export default {
         article: 'Artigo científico',
         congress: 'Congresso',
         year: 'ANO',
-        welcome: 'BEM-VINDO AO GRUPO NOIS'
+        welcome: 'BEM-VINDO AO GRUPO NOIS',
+        descricao: "ALGORITMOS DE RECONHECIMENTO DE PADRÕES PARA O LEVANTAMENTO DE PROBABILIDADE CRÍTICA DE INFECÇÃO EM LOCAL CIRÚRGICO",
+        download: 'BAIXE AGORA',
+        artigo: 'ARTIGO CIENTÍFICO',
+        copyright: "Copyright© 2021 Nois, Todos os direitos reservados."
       }, 
       eng : { 
         article: 'Scientific article',
         congress: 'Congress',
         year: 'Year',
-        welcome: 'WELCOME TO GROUP NOIS'
+        welcome: 'WELCOME TO GROUP NOIS',
+        descricao: "PATTERN RECOGNITION ALGORITHMS FOR THE SURVEY OF CRITICAL PROBABILITY OF INFECTION IN SURGICAL SITES",
+        download: 'DOWNLOAD',
+        artigo: 'SCIENTIFIC ARTICLE',
+        copyright: "Copyright © 2021 Nois, All rights reserved."
       },      
       text: {},
     }
