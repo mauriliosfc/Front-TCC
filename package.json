@@ -12,6 +12,7 @@
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "firebase": "^7.9.3",
+    "store-js": "^2.0.4",
     "vue": "^2.6.11",
     "vue-awesome-notifications": "^3.1.0",
     "vue-horizontal-timeline": "^0.8.0",

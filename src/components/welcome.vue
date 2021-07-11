@@ -11,16 +11,17 @@
             ></v-combobox>
         </div>    
       <img src="../assets/nois.png" alt="NOIS" />
-      <h1>BEM VINDO, NOIS É FODA</h1>
+      <h1>{{text.welcome}}</h1>
       <!--<img v-bind:src="foto.url" v-bind:alt="foto.titulo">-->
     </div>
     <div id="meio">
       <div id="buttongeral">
         <button @click="goTuDescription" class="button1">
-          <span class="en">FERRAMENTA ISC</span>
-          <span class="pt">TOOLS ISC</span>
+          <span>{{ text.tools }}</span>
         </button>
-        <button @click="goToApps" class="button2"><span>APLICATIVOS CIENTIFICOS</span></button>
+        <button @click="goToApps" class="button2">
+          <span>{{text.app}}</span>
+          </button>
       </div>
     </div>
     <div id="rodape">
@@ -28,29 +29,51 @@
         <img src="../assets/n.png" alt="NOIS" />
       </div>
       <div class="copyright">
-        Copyright© 2021 Nois, Todos os direitos reservados.
+        <span>Copyright© 2021 Nois, Todos os direitos reservados.</span>
       </div>
     </div>
   </div>
 </template>
-
+var store = require('store')
 <script>
 export default {
   data() {
     return {
-      language: 'English',
-      languages: [
-        'English',
-        'Portuguese'
-      ]
+      language: '',
+      languages: [        
+        'Portuguese',
+        'English'
+      ],      
+      pt : { 
+        tools: 'FERRAMENTA ISC', 
+        app: 'APLICATIVOS CIENTIFICOS',
+        welcome: 'BEM-VINDO AO GRUPO NOIS'
+      }, 
+      eng : { 
+        tools: 'TOOLS ISC',
+        app: 'SCIENTIFIC APPLICATIONS',
+        welcome: 'WELCOME TO GROUP NOIS'
+      },      
+      text: {},
     }
   },
-  methods: {
+  beforeMount(){    
+    this.setStorage();
+    this.setLanguage();
+ },
+  methods: {    
+    setStorage() {
+      if(sessionStorage.getItem('language') == null){
+        sessionStorage.setItem('language', 'English');
+      }
+      this.language = sessionStorage.getItem('language');
+    },
     setLanguage() {
-      if(this.language == "English"){
-          console.log("English")
+      sessionStorage.setItem('language', this.language);            
+      if(sessionStorage.getItem('language') == "English"){
+        this.text = this.eng;
       }else{
-          console.log("Portuguese")
+        this.text = this.pt;
       }
     },
     goTuDescription() {

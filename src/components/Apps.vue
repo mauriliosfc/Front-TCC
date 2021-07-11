@@ -1,8 +1,17 @@
 <template>
   <div id="geral">
     <div id="painel">
+      <div id="combobox">
+       <v-combobox @change="setLanguage()" 
+          v-model='language'
+          :items='languages'
+          label='Language'
+          :auto-select-first='true'
+          v-on:change='onChange'
+        ></v-combobox>
+      </div>    
       <img src="../assets/nois.png" alt="NOIS" />
-      <h1>BEM VINDO, NOIS É FODA</h1>
+      <h1>{{text.welcome}}</h1>
       <!--<img v-bind:src="foto.url" v-bind:alt="foto.titulo">-->
     </div>
     <div id="meio"> 
@@ -36,9 +45,9 @@
           <v-list-item three-line>
             <v-list-item-content>    
               <div class="overline mb-4">
-                <b>Artigo científico:</b> PATTERN RECOGNITION ALGORITHMS FOR THE SURVEY OF CRITICAL PROBABILITY OF INFECTION IN SURGICAL SITES
-                <br><b>Congresso:</b> Decennial 2020
-                <br><b>ANO:</b> 2020  
+                <b>{{text.article}}:</b> PATTERN RECOGNITION ALGORITHMS FOR THE SURVEY OF CRITICAL PROBABILITY OF INFECTION IN SURGICAL SITES
+                <br><b>{{text.congress}}:</b> Decennial 2020
+                <br><b>{{text.year}}:</b> 2020  
               </div>
             </v-list-item-content>
           </v-list-item>
@@ -75,7 +84,49 @@
 
 <script>
 export default {
-    name: "Apps",
+  name: "Apps",
+  beforeMount(){    
+    this.setStorage();
+    this.setLanguage();
+  },
+  data() {
+    return {
+      language: '',
+      languages: [        
+        'Portuguese',
+        'English'
+      ],      
+      pt : { 
+        article: 'Artigo científico',
+        congress: 'Congresso',
+        year: 'ANO',
+        welcome: 'BEM-VINDO AO GRUPO NOIS'
+      }, 
+      eng : { 
+        article: 'Scientific article',
+        congress: 'Congress',
+        year: 'Year',
+        welcome: 'WELCOME TO GROUP NOIS'
+      },      
+      text: {},
+    }
+  },
+  methods: {    
+    setStorage() {
+      if(sessionStorage.getItem('language') == null){
+        sessionStorage.setItem('language', 'English');        
+      }
+      this.language = sessionStorage.getItem('language');
+    },
+    setLanguage() {
+      sessionStorage.setItem('language', this.language);            
+      if(sessionStorage.getItem('language') == "English"){
+        this.text = this.eng;
+      }else{
+        this.text = this.pt;
+      }
+    },
+  }
 }
 </script>
 
@@ -108,7 +159,12 @@ h1 {
   position: absolute;
   background: #426d9b;
 }
-
+#combobox{
+  width: 110px;
+  height: 50px;
+  position: absolute;
+  right: 0 px;
+}
 #buttongeral {
   width: 100vw;
   height: 100vh;
