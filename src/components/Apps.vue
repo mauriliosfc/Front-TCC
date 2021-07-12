@@ -46,7 +46,7 @@
             <v-list-item-content>    
               <div class="overline mb-4">
                 <b>{{text.article}}:</b> {{text.descricao}}
-                <br><b>{{text.congress}}:</b> Decennial 2020
+                <br><b>{{text.congress}}:</b>Decennial 2020
                 <br><b>{{text.year}}:</b> 2020  
               </div>
             </v-list-item-content>
