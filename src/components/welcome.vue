@@ -106,7 +106,7 @@ h1 {
 }
 #combobox {
   width: 110px;
-  height: 50px;
+  height: 35px;
   position: absolute;
   right: 0 px;
 }

@@ -5,7 +5,19 @@
         <v-col cols="12" sm="12" md="12">
           <v-card class="elevation-12">
             <v-toolbar color="success" dark flat>
-              <v-toolbar-title>Consulta Risco Cirurgico</v-toolbar-title>
+              <v-toolbar-title class="flex text-center">{{
+                text.CRC
+              }}</v-toolbar-title>
+              <div id="combobox_consult">
+                <v-combobox
+                  @change="setLanguage()"
+                  v-model="language"
+                  :items="languages"
+                  label="Language"
+                  :auto-select-first="true"
+                  v-on:change="onChange"
+                ></v-combobox>
+              </div>
             </v-toolbar>
             <v-card-text>
               <v-form>
@@ -13,17 +25,17 @@
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-select
                       v-model="form.tipo_cuirurgia_especifica"
-                      :items="tce_options"
+                      :items="text_tce.tce_options"
                       menu-props="auto"
-                      label="Tipo Cirurgia Especifica"
+                      :label="text.TCP"
                     ></v-select>
                   </v-col>
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-select
                       v-model="form.tipo_cirurgia"
-                      :items="Tipo_Cirurgia"
+                      :items="text_tc.Tipo_Cirurgia"
                       menu-props="auto"
-                      label="Tipo Cirurgia"
+                      :label="text.TC"
                     ></v-select>
                   </v-col>
                 </v-row>
@@ -33,12 +45,12 @@
                       v-model="form.hospital"
                       :items="Hospital"
                       menu-props="auto"
-                      label="Hospital"
+                      :label="text.HP"
                     ></v-select>
                   </v-col>
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-text-field
-                      label="Numero de Internacões"
+                      :label="text.NDI"
                       v-model="form.num_internacao"
                       name="num_internacao"
                       type="number"
@@ -48,7 +60,7 @@
                 <v-row align="center" justify="center">
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-text-field
-                      label="Idade"
+                      :label="text.IDD"
                       v-model="form.idade_anos"
                       name="idade_anos"
                       type="number"
@@ -56,7 +68,7 @@
                   </v-col>
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-text-field
-                      label="t_ate_cirurgia"
+                      :label="text.TAC"
                       v-model="form.t_ate_cirurgia"
                       name="t_ate_cirurgia"
                       type="number"
@@ -66,25 +78,25 @@
                 <v-row align="center" justify="center">
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-text-field
-                      label="duracao_cirurgia"
+                      :label="text.DC"
                       v-model="form.duracao_cirurgia"
                       name="duracao_cirurgia"
                       type="number"
                     />
                   </v-col>
                   <v-col class="d-flex" cols="12" sm="6">
-                    <v-select
-                      v-model="form.potencial_contaminacao"
-                      :items="pc_options"
-                      menu-props="auto"
-                      label="Potencial contaminacao"
-                    ></v-select>
+                    <v-text-field
+                      :label="text.NPB"
+                      v-model="form.num_profissionais_bloco"
+                      name="num_profissionais_bloco"
+                      type="number"
+                    />
                   </v-col>
                 </v-row>
                 <v-row align="center" justify="center">
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-text-field
-                      label="Num procedimentos"
+                      :label="text.NP"
                       v-model="form.num_procedimentos"
                       name="num_procedimentos"
                       type="number"
@@ -92,19 +104,9 @@
                   </v-col>
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-text-field
-                      label="Gravidade asa"
+                      :label="text.GA"
                       v-model="form.gravidade_asa"
                       name="gravidade_asa"
-                      type="number"
-                    />
-                  </v-col>
-                </v-row>
-                <v-row>
-                  <v-col class="d-flex" cols="12" sm="6">
-                    <v-text-field
-                      label="Num profissionais nobloco"
-                      v-model="form.num_profissionais_bloco"
-                      name="num_profissionais_bloco"
                       type="number"
                     />
                   </v-col>
@@ -115,7 +117,7 @@
                       false-value="0"
                       true-value="1"
                       v-model="form.cirurgia_limpa"
-                      :label="`cirurgia_limpa`"
+                      :label="text.CL"
                     ></v-checkbox>
                   </v-col>
                   <v-col class="d-flex" cols="12" sm="6">
@@ -123,7 +125,7 @@
                       false-value="0"
                       true-value="1"
                       v-model="form.anestesia_geral"
-                      :label="`anestesia_geral`"
+                      :label="text.AG"
                     ></v-checkbox>
                   </v-col>
                 </v-row>
@@ -133,7 +135,7 @@
                       false-value="0"
                       true-value="1"
                       v-model="form.emergencia"
-                      :label="`emergencia`"
+                      :label="text.EM"
                     ></v-checkbox>
                   </v-col>
                   <v-col class="d-flex" cols="12" sm="6">
@@ -141,7 +143,7 @@
                       false-value="0"
                       true-value="1"
                       v-model="form.protese"
-                      :label="`protese`"
+                      :label="text.PRO"
                     ></v-checkbox>
                   </v-col>
                 </v-row>
@@ -151,7 +153,7 @@
                       false-value="0"
                       true-value="1"
                       v-model="form.cirurgia_videolaparoscopica"
-                      :label="`cirurgia_videolaparoscopica`"
+                      :label="text.CV"
                     ></v-checkbox>
                   </v-col>
                   <v-col class="d-flex" cols="12" sm="6">
@@ -159,7 +161,7 @@
                       false-value="0"
                       true-value="1"
                       v-model="form.iric"
-                      :label="`protese`"
+                      :label="text.IRI"
                     ></v-checkbox>
                   </v-col>
                 </v-row>
@@ -167,8 +169,8 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer />
-              <v-btn color="warning" @click="onReset">Reset</v-btn>
-              <v-btn color="success" @click="onSubmit">Consultar</v-btn>
+              <v-btn color="warning" @click="onReset">RESET</v-btn>
+              <v-btn color="success" @click="onSubmit">{{ text.CON }}</v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -185,6 +187,48 @@ export default {
   data() {
     return {
       msg: "Welcome to Your Vue.js App",
+      languages: ["Portuguese", "English"],
+      pt: {
+        CRC: "CONSULTA RISCO CIRURGICO",
+        TCP: "TIPO CIRURGIA ESPECÍFICA",
+        TC: "TIPO CIRURGIA",
+        HP: "HOSPITAL",
+        NDI: "NÚMERO DE INTERNAÇÕES",
+        IDD: "IDADE",
+        TAC: "TEMPO ATÉ A CIRURGIA",
+        DC: "DURAÇÃO DA CIRURGIA",
+        NPB: "NÚMERO DE PROFISSIONAIS NO BLOCO",
+        NP: "NÚMERO DE PROCEDIMENTOS",
+        GA: "GRAVIDADE ASA",
+        CL: "CIRURGIA LIMPA",
+        EM: "EMERGÊNCIA",
+        AG: "ANESTESIA GERAL",
+        PRO: "PROTESE",
+        CV: "CIRURGIA VIDEOLAPAROSCÓPICA",
+        IRI: "ÍNDICE DE RISCO DE INFECCÃO CIRÚRGICA",
+        CON: "CONSULTAR",
+      },
+      eng: {
+        CRC: "SURGICAL RISK CONSULTATION",
+        TCP: "SPECIFIC SURGERY TYPE",
+        TC: "SURGERY TYPE",
+        HP: "HOSPITAL",
+        NDI: "NUMBER OF ADMISSIONS",
+        IDD: "AGE",
+        TAC: "TIME UNTIL SURGERY",
+        DC: "DURATION OF SURGERY",
+        NPB: "NUMBER OF PROFESSIONALS IN THE BLOCK",
+        NP: "NUMBER OF PROCEDURES",
+        GA: "ASA",
+        CL: "CLEAN SURGERY",
+        EM: "EMERGENCY",
+        AG: "GENERAL ANESTHESIA",
+        PRO: "PROSTHESIS",
+        CV: "VIDEOLAPAROSCOPIC SURGERY",
+        IRI: "SURGICAL INFECTION RISK INDEX",
+        CON: "CONSULT",
+      },
+      text: {},
       form: {
         tipo_cuirurgia_especifica: "",
         tipo_cirurgia: "",
@@ -197,7 +241,6 @@ export default {
         T_Ate_Maior_4: "",
         duracao_cirurgia: "",
         Duracao_Acima_Duas_Horas: "",
-        potencial_contaminacao: "",
         cirurgia_limpa: "0",
         anestesia_geral: "0",
         emergencia: "0",
@@ -211,32 +254,62 @@ export default {
         num_profissionais_bloco: "",
         Acima_4_Profissionais: "",
       },
-      tce_options: [
-        { value: 1, text: "Laparotomia exploradora – videolaparoscópica" },
-        { value: 2, text: "Laparotomia exploradora" },
-        { value: 3, text: "Herniorrafia – videolaparoscópica" },
-        { value: 4, text: "Herniorrafia" },
-        { value: 5, text: "Colecistectomia – videolaparoscópica" },
-        { value: 6, text: "Colecistectomia" },
-        { value: 7, text: "Cirurgia de cólon – videolaparoscópica" },
-        { value: 8, text: "Cirurgia de cólon" },
-        { value: 9, text: "Apendicectomia – videolaparoscópica" },
-        { value: 1, text: "Apendicectomia" },
-        { value: "d", text: "This one is disabled", disabled: true },
-      ],
+      tce_options_pt: {
+        tce_options: [
+          { value: 1, text: "Laparotomia Exploradora – Videolaparoscópica" },
+          { value: 2, text: "Laparotomia Exploradora" },
+          { value: 3, text: "Herniorrafia – Videolaparoscópica" },
+          { value: 4, text: "Herniorrafia" },
+          { value: 5, text: "Colecistectomia – Videolaparoscópica" },
+          { value: 6, text: "Colecistectomia" },
+          { value: 7, text: "Histerectomia – Videolaparoscópica" },
+          { value: 8, text: "Histerectomia" },
+          { value: 9, text: "Apendicectomia – Videolaparoscópica" },
+          { value: 1, text: "Apendicectomia" },
+          { value: "d", text: "This one is disabled", disabled: true },
+        ],
+      },
+      tce_options_eng: {
+        tce_options: [
+          { value: 1, text: "Exploratory Laparotomy - Videolaparoscopic" },
+          { value: 2, text: "Exploratory Laparotomy" },
+          { value: 3, text: "Herniorrhaphy - Videolaparoscopic" },
+          { value: 4, text: "Herniorrhaphy" },
+          { value: 5, text: "Cholecystectomy - Videolaparoscopic" },
+          { value: 6, text: "Cholecystectomy" },
+          { value: 7, text: "Hysterectomy - Videolaparoscopic" },
+          { value: 8, text: "Hysterectomy" },
+          { value: 9, text: "Appendectomy - Videolaparoscopic" },
+          { value: 1, text: "Appendectomy" },
+          { value: "d", text: "This one is disabled", disabled: true },
+        ],
+      },
+      text_tce: {},
       pc_options: [
         { value: 1, text: "Limpa" },
         { value: 2, text: "Contaminada" },
         { value: 3, text: "Infectada" },
         { value: 4, text: "Potencialmente Contaminada" },
       ],
-      Tipo_Cirurgia: [
-        { value: 1, text: "Apendicectomia" },
-        { value: 2, text: "Laparotomia exploradora" },
-        { value: 3, text: "Herniorrafia" },
-        { value: 4, text: "Colecistectomia" },
-        { value: 5, text: "Cirurgia de cólo" },
-      ],
+      Tipo_Cirurgia_pt: {
+        Tipo_Cirurgia: [
+          { value: 1, text: "Apendicectomia" },
+          { value: 2, text: "Laparotomia Exploradora" },
+          { value: 3, text: "Herniorrafia" },
+          { value: 4, text: "Colecistectomia" },
+          { value: 5, text: "Histerectomia" },
+        ],
+      },
+      Tipo_Cirurgia_eng: {
+        Tipo_Cirurgia: [
+          { value: 1, text: "Appendectomy" },
+          { value: 2, text: "Exploratory Laparotomy" },
+          { value: 3, text: "Herniorrhaphy" },
+          { value: 4, text: "Cholecystectomy" },
+          { value: 5, text: "Hysterectomy" },
+        ],
+      },
+      text_tc: {},
       Hospital: [
         { value: 1, text: "B" },
         { value: 2, text: "D" },
@@ -251,6 +324,24 @@ export default {
     };
   },
   methods: {
+    setStorage() {
+      if (sessionStorage.getItem("language") == null) {
+        sessionStorage.setItem("language", "English");
+      }
+      this.language = sessionStorage.getItem("language");
+    },
+    setLanguage() {
+      sessionStorage.setItem("language", this.language);
+      if (sessionStorage.getItem("language") == "English") {
+        this.text = this.eng;
+        this.text_tce = this.tce_options_eng;
+        this.text_tc = this.Tipo_Cirurgia_eng;
+      } else {
+        this.text = this.pt;
+        this.text_tce = this.tce_options_pt;
+        this.text_tc = this.Tipo_Cirurgia_pt;
+      }
+    },
     validaCampos() {
       if (Number(this.form.num_internacao) == 1) {
         this.form.primeira_internacao = "1";
@@ -353,5 +444,14 @@ li {
 }
 a {
   color: #42b983;
+}
+#toolbar_consult {
+  text-align: right;
+}
+#combobox_consult {
+  width: 110px;
+  height: 35px;
+  position: absolute;
+  right: 0 px;
 }
 </style>

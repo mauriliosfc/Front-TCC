@@ -15,34 +15,25 @@
         <div class="text-h6 mb-1">{{ text.estatisticas }}</div>
         <v-row justify="space-around">
           <v-col cols="5">
-            <div class="subheading">{{ text.grafico }} 1</div>
+            <div class="subheading pt-4">{{ text.grafico }} 1</div>
             <v-img
-              src="https://cdn.diferenca.com/imagens/grafico-coluna-cke.jpg"
-            ></v-img>
-            <div class="subheading pt-4">{{ text.grafico }} 2</div>
-            <v-img
-              src="https://cdn.diferenca.com/imagens/grafico-coluna-cke.jpg"
+              src="../assets/grupo1.jpeg"
             ></v-img>
             <div class="subheading pt-4">{{ text.grafico }} 3</div>
             <v-img
-              src="https://cdn.diferenca.com/imagens/grafico-coluna-cke.jpg"
+              src="../assets/grupo3.jpeg"
             ></v-img>
           </v-col>
 
           <v-col cols="5">
-            <div class="subheading">{{ text.grafico }} 4</div>
+            <div class="subheading">{{ text.grafico }} 2</div>
             <v-img
-              src="https://cdn.diferenca.com/imagens/grafico-coluna-cke.jpg"
+              src="../assets/grupo2.jpeg"
               contain
             ></v-img>
-            <div class="subheading pt-4">{{ text.grafico }} 5</div>
+            <div class="subheading pt-4">{{ text.grafico }} 4</div>
             <v-img
-              src="https://cdn.diferenca.com/imagens/grafico-coluna-cke.jpg"
-              contain
-            ></v-img>
-            <div class="subheading pt-4">{{ text.grafico }} 6</div>
-            <v-img
-              src="https://cdn.diferenca.com/imagens/grafico-coluna-cke.jpg"
+              src="../assets/grupo4.jpeg"
               contain
             ></v-img>
           </v-col>
