@@ -1,5 +1,5 @@
 <template>
-  <v-app id="app">
+  <v-app id="app" >
     <router-view v-if="!user.loggedIn" />
     <div v-else>
       <v-app-bar color="primary" dark>
@@ -8,26 +8,19 @@
       </v-app-bar>
       <router-view />
       <v-navigation-drawer v-model="drawer" absolute temporary>
-        <v-list nav dense>
+        <v-list nav dense style="z-index: 9999">
           <v-list-item-group active-class="deep-purple--text text--accent-4">
-            <v-list-item>
+            <v-list-item @click="goToWelcome">
               <v-list-item-icon>
                 <v-icon>mdi-home</v-icon>
               </v-list-item-icon>
               <v-list-item-title>Home</v-list-item-title>
             </v-list-item>
-
             <v-list-item>
               <v-list-item-icon>
                 <v-icon>mdi-account</v-icon>
               </v-list-item-icon>
               <v-list-item-title>Account</v-list-item-title>
-            </v-list-item>
-            <v-list-item @click="goToConsult">
-              <v-list-item-icon>
-                <v-icon>mdi-account</v-icon>
-              </v-list-item-icon>
-              <v-list-item-title>Consult</v-list-item-title>
             </v-list-item>
             <v-list-item @click="signOut">
               <v-list-item-icon>
@@ -67,6 +60,11 @@ export default {
     goToConsult() {
        this.$router.replace({
           name: "consult"
+        });
+    },
+    goToWelcome() {
+       this.$router.replace({
+          name: "welcome"
         });
     }
   }
