@@ -32,13 +32,6 @@ template {
 h1 {
   color: #3072b9;
 }
-#painel {
-  width: 100%;
-  height: 13 130px;
-  background: white;
-  box-shadow: 0px 0.1px 5px rgb(95, 95, 95);
-  position: absolute;
-}
 img {
   display: block;
   margin-left: auto;

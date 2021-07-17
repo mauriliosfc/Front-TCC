@@ -151,14 +151,6 @@ h1 {
 h2 {
   color: #e4e4e4;
 }
-#painel {
-  width: 100%;
-  height: 150px;
-  background: white;
-  box-shadow: 0px 0.1px 5px rgb(95, 95, 95);
-  position: fixed;
-  z-index: 9999;
-}
 img {
   display: block;
   margin-left: auto;
