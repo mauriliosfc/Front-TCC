@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="fundo1">
+  <div id="app">
     <div id="comboboxContatos">
       <v-combobox
         @change="setLanguage()"
@@ -10,7 +10,7 @@
         v-on:change="onChange"
       ></v-combobox>
     </div>
-    <v-app id="inspire">
+    <v-app>
       <v-timeline>
         <v-timeline-item v-for="n in 1" :key="n" large>
           <template v-slot:icon>
