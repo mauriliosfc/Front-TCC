@@ -9,7 +9,7 @@
       <router-view />
       <v-navigation-drawer v-model="drawer" absolute temporary>
         <v-list nav dense style="z-index: 9999">
-          <v-list-item-group active-class="deep-purple--text text--accent-4">
+          <v-list-item-group active-class="grey lighten-1">
             <v-list-item @click="goToWelcome">
               <v-list-item-icon>
                 <v-icon>mdi-home</v-icon>
