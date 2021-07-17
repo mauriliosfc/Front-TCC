@@ -81,7 +81,7 @@
                     />
                   </v-col>
                 </v-row>
-                <v-row align="right" justify="right">
+                <v-row>
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-text-field
                       :label="text.DC"
