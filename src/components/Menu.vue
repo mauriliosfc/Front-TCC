@@ -16,12 +16,12 @@
               </v-list-item-icon>
               <v-list-item-title>Home</v-list-item-title>
             </v-list-item>
-            <v-list-item>
+           <!-- <v-list-item>
               <v-list-item-icon>
                 <v-icon>mdi-account</v-icon>
               </v-list-item-icon>
               <v-list-item-title>Account</v-list-item-title>
-            </v-list-item>
+            </v-list-item>-->
             <v-list-item @click="signOut">
               <v-list-item-icon>
                 <v-icon>mdi-logout</v-icon>
