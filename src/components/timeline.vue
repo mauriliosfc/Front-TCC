@@ -345,6 +345,6 @@ export default {
 <style>
 #fundo1{
   position: relative;
-  background-color:#fdf7e2;
+  background-color:#ffffff;
 }
 </style>
