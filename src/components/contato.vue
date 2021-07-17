@@ -85,8 +85,8 @@ export default {
   position: relative;
   background-image: url(../assets/celebro.png);
   background-size: cover;
-  widows: 100%;
-  height: 100%;
+  widows: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
