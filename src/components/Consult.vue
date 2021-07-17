@@ -31,26 +31,9 @@
                     ></v-select>
                   </v-col>
                   <v-col class="d-flex" cols="12" sm="6">
-                    <v-select
-                      v-model="form.tipo_cirurgia"
-                      :items="text_tc.Tipo_Cirurgia"
-                      menu-props="auto"
-                      :label="text.TC"
-                    ></v-select>
-                  </v-col>
-                </v-row>
-                <v-row align="center" justify="center">
-                  <v-col class="d-flex" cols="12" sm="6">
-                    <v-select
-                      v-model="form.hospital"
-                      :items="Hospital"
-                      menu-props="auto"
-                      :label="text.HP"
-                    ></v-select>
-                  </v-col>
-                  <v-col class="d-flex" cols="12" sm="6">
                     <v-text-field
                       :label="text.NDI"
+                      min=0
                       v-model="form.num_internacao"
                       name="num_internacao"
                       type="number"
@@ -61,6 +44,7 @@
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-text-field
                       :label="text.IDD"
+                      min=0
                       v-model="form.idade_anos"
                       name="idade_anos"
                       type="number"
@@ -78,25 +62,8 @@
                 <v-row align="center" justify="center">
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-text-field
-                      :label="text.DC"
-                      v-model="form.duracao_cirurgia"
-                      name="duracao_cirurgia"
-                      type="number"
-                    />
-                  </v-col>
-                  <v-col class="d-flex" cols="12" sm="6">
-                    <v-text-field
-                      :label="text.NPB"
-                      v-model="form.num_profissionais_bloco"
-                      name="num_profissionais_bloco"
-                      type="number"
-                    />
-                  </v-col>
-                </v-row>
-                <v-row align="center" justify="center">
-                  <v-col class="d-flex" cols="12" sm="6">
-                    <v-text-field
                       :label="text.NP"
+                      min=0
                       v-model="form.num_procedimentos"
                       name="num_procedimentos"
                       type="number"
@@ -105,8 +72,21 @@
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-text-field
                       :label="text.GA"
+                      min=1
+                      max=5
                       v-model="form.gravidade_asa"
                       name="gravidade_asa"
+                      type="number"
+                    />
+                  </v-col>
+                </v-row>
+                <v-row align="center" justify="center">
+                  <v-col class="d-flex" cols="12" sm="6">
+                    <v-text-field
+                      :label="text.DC"
+                      min=0
+                      v-model="form.duracao_cirurgia"
+                      name="duracao_cirurgia"
                       type="number"
                     />
                   </v-col>
@@ -148,22 +128,6 @@
                   </v-col>
                 </v-row>
                 <v-row>
-                  <v-col class="d-flex" cols="12" sm="6">
-                    <v-checkbox
-                      false-value="0"
-                      true-value="1"
-                      v-model="form.cirurgia_videolaparoscopica"
-                      :label="text.CV"
-                    ></v-checkbox>
-                  </v-col>
-                  <v-col class="d-flex" cols="12" sm="6">
-                    <v-checkbox
-                      false-value="0"
-                      true-value="1"
-                      v-model="form.iric"
-                      :label="text.IRI"
-                    ></v-checkbox>
-                  </v-col>
                 </v-row>
               </v-form>
             </v-card-text>
@@ -191,67 +155,52 @@ export default {
       pt: {
         CRC: "CONSULTA RISCO CIRURGICO",
         TCP: "TIPO CIRURGIA ESPECÍFICA",
-        TC: "TIPO CIRURGIA",
-        HP: "HOSPITAL",
         NDI: "NÚMERO DE INTERNAÇÕES",
         IDD: "IDADE",
         TAC: "TEMPO ATÉ A CIRURGIA",
         DC: "DURAÇÃO DA CIRURGIA",
-        NPB: "NÚMERO DE PROFISSIONAIS NO BLOCO",
         NP: "NÚMERO DE PROCEDIMENTOS",
         GA: "GRAVIDADE ASA",
         CL: "CIRURGIA LIMPA",
         EM: "EMERGÊNCIA",
         AG: "ANESTESIA GERAL",
         PRO: "PROTESE",
-        CV: "CIRURGIA VIDEOLAPAROSCÓPICA",
-        IRI: "ÍNDICE DE RISCO DE INFECCÃO CIRÚRGICA",
         CON: "CONSULTAR",
       },
       eng: {
         CRC: "SURGICAL RISK CONSULTATION",
         TCP: "SPECIFIC SURGERY TYPE",
-        TC: "SURGERY TYPE",
-        HP: "HOSPITAL",
         NDI: "NUMBER OF ADMISSIONS",
         IDD: "AGE",
         TAC: "TIME UNTIL SURGERY",
         DC: "DURATION OF SURGERY",
-        NPB: "NUMBER OF PROFESSIONALS IN THE BLOCK",
         NP: "NUMBER OF PROCEDURES",
         GA: "ASA",
         CL: "CLEAN SURGERY",
         EM: "EMERGENCY",
         AG: "GENERAL ANESTHESIA",
         PRO: "PROSTHESIS",
-        CV: "VIDEOLAPAROSCOPIC SURGERY",
-        IRI: "SURGICAL INFECTION RISK INDEX",
         CON: "CONSULT",
       },
       text: {},
       form: {
         tipo_cuirurgia_especifica: "",
-        tipo_cirurgia: "",
-        hospital: "",
         num_internacao: "",
-        primeira_internacao: "",
         idade_anos: "",
-        acima_70_anos: "",
         t_ate_cirurgia: "",
-        T_Ate_Maior_4: "",
         duracao_cirurgia: "",
-        Duracao_Acima_Duas_Horas: "",
         cirurgia_limpa: "0",
         anestesia_geral: "0",
         emergencia: "0",
         gravidade_asa: "",
-        ASA_Maior_2: "",
         protese: "0",
-        cirurgia_videolaparoscopica: "0",
-        iric: "0",
         num_procedimentos: "",
+        primeira_internacao: "",
+        acima_70_anos: "",
+        T_Ate_Maior_4: "",
+        Duracao_Acima_Duas_Horas: "",
+        ASA_Maior_2: "",
         Mais_de_Um_Proc: "",
-        num_profissionais_bloco: "",
         Acima_4_Profissionais: "",
       },
       tce_options_pt: {
@@ -285,43 +234,11 @@ export default {
         ],
       },
       text_tce: {},
-      pc_options: [
-        { value: 1, text: "Limpa" },
-        { value: 2, text: "Contaminada" },
-        { value: 3, text: "Infectada" },
-        { value: 4, text: "Potencialmente Contaminada" },
-      ],
-      Tipo_Cirurgia_pt: {
-        Tipo_Cirurgia: [
-          { value: 1, text: "Apendicectomia" },
-          { value: 2, text: "Laparotomia Exploradora" },
-          { value: 3, text: "Herniorrafia" },
-          { value: 4, text: "Colecistectomia" },
-          { value: 5, text: "Histerectomia" },
-        ],
-      },
-      Tipo_Cirurgia_eng: {
-        Tipo_Cirurgia: [
-          { value: 1, text: "Appendectomy" },
-          { value: 2, text: "Exploratory Laparotomy" },
-          { value: 3, text: "Herniorrhaphy" },
-          { value: 4, text: "Cholecystectomy" },
-          { value: 5, text: "Hysterectomy" },
-        ],
-      },
-      text_tc: {},
-      Hospital: [
-        { value: 1, text: "B" },
-        { value: 2, text: "D" },
-        { value: 3, text: "E" },
-        { value: 4, text: "F" },
-        { value: 5, text: "G" },
-      ],
-      boolena_options: [
-        { value: 0, text: "Não" },
-        { value: 1, text: "Sim" },
-      ],
     };
+  },
+  beforeMount() {
+    this.setStorage();
+    this.setLanguage();
   },
   methods: {
     setStorage() {
@@ -335,11 +252,9 @@ export default {
       if (sessionStorage.getItem("language") == "English") {
         this.text = this.eng;
         this.text_tce = this.tce_options_eng;
-        this.text_tc = this.Tipo_Cirurgia_eng;
       } else {
         this.text = this.pt;
         this.text_tce = this.tce_options_pt;
-        this.text_tc = this.Tipo_Cirurgia_pt;
       }
     },
     validaCampos() {
