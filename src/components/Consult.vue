@@ -4,7 +4,7 @@
       <v-row align="center" justify="center">
         <v-col cols="12" sm="12" md="12">
           <v-card class="elevation-12">
-            <v-toolbar color="success" dark flat>
+            <v-toolbar color="primary" dark flat>
               <v-toolbar-title class="flex text-center">{{
                 text.CRC
               }}</v-toolbar-title>
@@ -134,8 +134,8 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer />
-              <v-btn color="warning" @click="onReset">RESET</v-btn>
-              <v-btn color="success" @click="onSubmit">{{ text.CON }}</v-btn>
+              <v-btn color="red darken-2" @click="onReset">RESET</v-btn>
+              <v-btn color="primary" @click="onSubmit">{{ text.CON }}</v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
