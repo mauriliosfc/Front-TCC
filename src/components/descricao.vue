@@ -203,14 +203,6 @@ h1 {
   background-image: url(../assets/celebro.png);
   background-size: cover;
 }
-#rodape {
-  width: 100%;
-  background: rgb(51, 51, 51);
-  bottom: 0;
-  box-shadow: 0px 0px 1px rgb(95, 95, 95);
-  position: fixed;
-  z-index: 9999;
-}
 a {
   margin: 10px;
 }
@@ -247,7 +239,6 @@ a:link {
   padding: 5px;
   opacity: 0.9;
 }
-
 .coluna3 {
   width: 98%;
   text-align: justify;
@@ -259,12 +250,10 @@ a:link {
   padding: 5px;
   opacity: 0.9;
 }
-
 p {
   margin: 15px;
   color: black;
 }
-
 .btartigo1 {
   background-color: #3072b9;
   width: 210px;

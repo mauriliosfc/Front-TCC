@@ -174,10 +174,11 @@ h1 {
 }
 #rodape {
   width: 100%;
-  background: rgb(51, 51, 51);
-  position: absolute;
+  background: #424242;
   bottom: 0;
   box-shadow: 0px 0px 1px rgb(95, 95, 95);
+  position: fixed;
+  z-index: 9999;
 }
 a {
   margin: 10px;

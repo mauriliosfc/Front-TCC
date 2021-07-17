@@ -145,13 +145,6 @@ template {
 h1 {
   color: #3072b9;
 }
-#painel {
-  width: 100%;
-  height: 13 130px;
-  background: white;
-  box-shadow: 0px 0.1px 5px rgb(95, 95, 95);
-  position: absolute;
-}
 img {
   display: block;
   margin-left: auto;
@@ -181,7 +174,6 @@ h1 {
   justify-content: center;
   align-items: center;
 }
-
 .button1 {
   background-color: #68e764;
   width: 450px;
@@ -213,18 +205,10 @@ h1 {
   opacity: 0.8;
   filter: alpha(opacity=90);
 }
-
 #geral {
   position: relative;
   background-image: url(../assets/celebro.png);
   background-size: cover;
-}
-#rodape {
-  width: 100%;
-  background: rgb(51, 51, 51);
-  position: absolute;
-  bottom: 0;
-  box-shadow: 0px 0px 1px rgb(95, 95, 95);
 }
 a {
   margin: 10px;
