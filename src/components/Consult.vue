@@ -53,6 +53,7 @@
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-text-field
                       :label="text.TAC"
+                      min=0
                       v-model="form.t_ate_cirurgia"
                       name="t_ate_cirurgia"
                       type="number"
