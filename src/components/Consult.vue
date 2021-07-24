@@ -154,7 +154,7 @@ export default {
       msg: "Welcome to Your Vue.js App",
       languages: ["Portuguese", "English"],
       pt: {
-        CRC: "CONSULTA RISCO CIRURGICO",
+        CRC: "Consultar Risco Cirurgico",
         TCP: "TIPO CIRURGIA ESPECÍFICA",
         NDI: "NÚMERO DE INTERNAÇÕES",
         IDD: "IDADE",
@@ -169,7 +169,7 @@ export default {
         CON: "CONSULTAR",
       },
       eng: {
-        CRC: "SURGICAL RISK CONSULTATION",
+        CRC: "Surgical Risk Consultation - ISS Predictive Consulting",
         TCP: "SPECIFIC SURGERY TYPE",
         NDI: "NUMBER OF ADMISSIONS",
         IDD: "AGE",

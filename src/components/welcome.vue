@@ -49,9 +49,9 @@ export default {
         copyright: "Copyright© 2021 Nois, Todos os direitos reservados.",
       },
       eng: {
-        tools: "TOOLS ISC",
+        tools: "ISS AL APPLICATION",
         app: "SCIENTIFIC APPLICATIONS",
-        welcome: "WELCOME TO GROUP NOIS",
+        welcome: "WELCOME TO THE NOIS GROUP",
         copyright: "Copyright © 2021 Nois, All rights reserved.",
       },
       text: {},
