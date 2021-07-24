@@ -24,7 +24,7 @@
                 <v-row align="center" justify="center">
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-select
-                      v-model="form.tipo_cuirurgia_especifica"
+                      v-model="form.Tipo_Cirurgia_Especifica"
                       :items="text_tce.tce_options"
                       menu-props="auto"
                       :label="text.TCP"
@@ -34,8 +34,8 @@
                     <v-text-field
                       :label="text.NDI"
                       min=0
-                      v-model="form.num_internacao"
-                      name="num_internacao"
+                      v-model="form.Num_Internacao"
+                      name="Num_Internacao"
                       type="number"
                     />
                   </v-col>
@@ -45,8 +45,8 @@
                     <v-text-field
                       :label="text.IDD"
                       min=0
-                      v-model="form.idade_anos"
-                      name="idade_anos"
+                      v-model="form.Idade_Anos"
+                      name="Idade_Anos"
                       type="number"
                     />
                   </v-col>
@@ -54,8 +54,8 @@
                     <v-text-field
                       :label="text.TAC"
                       min=0
-                      v-model="form.t_ate_cirurgia"
-                      name="t_ate_cirurgia"
+                      v-model="form.T_Ate_Cirurgia"
+                      name="T_Ate_Cirurgia"
                       type="number"
                     />
                   </v-col>
@@ -65,8 +65,8 @@
                     <v-text-field
                       :label="text.NP"
                       min=0
-                      v-model="form.num_procedimentos"
-                      name="num_procedimentos"
+                      v-model="form.Num_Procedimentos"
+                      name="Num_Procedimentos"
                       type="number"
                     />
                   </v-col>
@@ -75,8 +75,8 @@
                       :label="text.GA"
                       min=1
                       max=5
-                      v-model="form.gravidade_asa"
-                      name="gravidade_asa"
+                      v-model="form.Gravidade_ASA"
+                      name="Gravidade_ASA"
                       type="number"
                     />
                   </v-col>
@@ -86,8 +86,8 @@
                     <v-text-field
                       :label="text.DC"
                       min=0
-                      v-model="form.duracao_cirurgia"
-                      name="duracao_cirurgia"
+                      v-model="form.Duracao_Cirurgia"
+                      name="Duracao_Cirurgia"
                       type="number"
                     />
                   </v-col>
@@ -97,7 +97,7 @@
                     <v-checkbox
                       false-value="0"
                       true-value="1"
-                      v-model="form.cirurgia_limpa"
+                      v-model="form.Cirurgia_Limpa"
                       :label="text.CL"
                     ></v-checkbox>
                   </v-col>
@@ -105,7 +105,7 @@
                     <v-checkbox
                       false-value="0"
                       true-value="1"
-                      v-model="form.anestesia_geral"
+                      v-model="form.Anestesia_Geral"
                       :label="text.AG"
                     ></v-checkbox>
                   </v-col>
@@ -115,7 +115,7 @@
                     <v-checkbox
                       false-value="0"
                       true-value="1"
-                      v-model="form.emergencia"
+                      v-model="form.Emergencia"
                       :label="text.EM"
                     ></v-checkbox>
                   </v-col>
@@ -123,7 +123,7 @@
                     <v-checkbox
                       false-value="0"
                       true-value="1"
-                      v-model="form.protese"
+                      v-model="form.Protese"
                       :label="text.PRO"
                     ></v-checkbox>
                   </v-col>
@@ -185,24 +185,17 @@ export default {
       },
       text: {},
       form: {
-        tipo_cuirurgia_especifica: "",
-        num_internacao: "",
-        idade_anos: "",
-        t_ate_cirurgia: "",
-        duracao_cirurgia: "",
-        cirurgia_limpa: "0",
-        anestesia_geral: "0",
-        emergencia: "0",
-        gravidade_asa: "",
-        protese: "0",
-        num_procedimentos: "",
-        primeira_internacao: "",
-        acima_70_anos: "",
-        T_Ate_Maior_4: "",
-        Duracao_Acima_Duas_Horas: "",
-        ASA_Maior_2: "",
-        Mais_de_Um_Proc: "",
-        Acima_4_Profissionais: "",
+        Tipo_Cirurgia_Especifica: "",
+        Num_Internacao: "",
+        Idade_Anos: "",
+        T_Ate_Cirurgia: "",
+        Duracao_Cirurgia: "",
+        Cirurgia_Limpa: "0",
+        Anestesia_Geral: "0",
+        Emergencia: "0",
+        Gravidade_ASA: "",
+        Protese: "0",
+        Num_Procedimentos: "",
       },
       tce_options_pt: {
         tce_options: [
@@ -256,49 +249,6 @@ export default {
       } else {
         this.text = this.pt;
         this.text_tce = this.tce_options_pt;
-      }
-    },
-    validaCampos() {
-      if (Number(this.form.num_internacao) == 1) {
-        this.form.primeira_internacao = "1";
-      } else {
-        this.form.primeira_internacao = "0";
-      }
-
-      if (Number(this.form.idade_anos) >= 70) {
-        this.form.acima_70_anos = "1";
-      } else {
-        this.form.acima_70_anos = "0";
-      }
-
-      if (Number(this.form.t_ate_cirurgia) > 4) {
-        this.form.T_Ate_Maior_4 = "1";
-      } else {
-        this.form.T_Ate_Maior_4 = "0";
-      }
-
-      if (Number(this.form.duracao_cirurgia) > 2) {
-        this.form.Duracao_Acima_Duas_Horas = "1";
-      } else {
-        this.form.Duracao_Acima_Duas_Horas = "0";
-      }
-
-      if (Number(this.form.gravidade_asa) > 2) {
-        this.form.ASA_Maior_2 = "1";
-      } else {
-        this.form.ASA_Maior_2 = "0";
-      }
-
-      if (Number(this.form.num_procedimentos) > 1) {
-        this.form.Mais_de_Um_Proc = "1";
-      } else {
-        this.form.Mais_de_Um_Proc = "0";
-      }
-
-      if (Number(this.form.num_profissionais_bloco) > 4) {
-        this.form.Acima_4_Profissionais = "1";
-      } else {
-        this.form.Acima_4_Profissionais = "0";
       }
     },
     async onSubmit() {
