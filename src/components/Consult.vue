@@ -252,7 +252,6 @@ export default {
       }
     },
     async onSubmit() {
-      this.validaCampos();
       console.log(this.form);
       // await axios
       //   .post(`http://localhost:5001/buscar`, {
