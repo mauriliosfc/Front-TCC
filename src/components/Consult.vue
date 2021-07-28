@@ -81,7 +81,7 @@
                     />
                   </v-col>
                 </v-row>
-                <v-row>
+                <!-- <v-row>
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-text-field
                       :label="text.DC"
@@ -91,7 +91,7 @@
                       type="number"
                     />
                   </v-col>
-                </v-row>
+                </v-row> -->
                 <v-row>
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-checkbox
@@ -189,7 +189,7 @@ export default {
         Num_Internacao: "",
         Idade_Anos: "",
         T_Ate_Cirurgia: "",
-        Duracao_Cirurgia: "",
+        Duracao_Cirurgia: "0",
         Cirurgia_Limpa: "0",
         Anestesia_Geral: "0",
         Emergencia: "0",
@@ -266,9 +266,10 @@ export default {
         .then((response) => {
           alert(
             "Probabilidade de infecção: " +
-              parseFloat(response.data).toFixed(4) * 100 +
+              parseFloat(response.data[0]).toFixed(4) * 100 +
               "%"
           );
+          // alert(response.data)
           this.$awn.success("Sucesso");
         })
         .catch((e) => {
