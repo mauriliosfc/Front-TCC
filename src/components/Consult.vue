@@ -33,7 +33,7 @@
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-text-field
                       :label="text.NDI"
-                      min=0
+                      min="0"
                       v-model="form.Num_Internacao"
                       name="Num_Internacao"
                       type="number"
@@ -44,7 +44,7 @@
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-text-field
                       :label="text.IDD"
-                      min=0
+                      min="0"
                       v-model="form.Idade_Anos"
                       name="Idade_Anos"
                       type="number"
@@ -53,7 +53,7 @@
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-text-field
                       :label="text.TAC"
-                      min=0
+                      min="0"
                       v-model="form.T_Ate_Cirurgia"
                       name="T_Ate_Cirurgia"
                       type="number"
@@ -64,7 +64,7 @@
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-text-field
                       :label="text.NP"
-                      min=0
+                      min="0"
                       v-model="form.Num_Procedimentos"
                       name="Num_Procedimentos"
                       type="number"
@@ -73,8 +73,8 @@
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-text-field
                       :label="text.GA"
-                      min=1
-                      max=5
+                      min="1"
+                      max="5"
                       v-model="form.Gravidade_ASA"
                       name="Gravidade_ASA"
                       type="number"
@@ -128,8 +128,7 @@
                     ></v-checkbox>
                   </v-col>
                 </v-row>
-                <v-row>
-                </v-row>
+                <v-row> </v-row>
               </v-form>
             </v-card-text>
             <v-card-actions>
@@ -140,17 +139,24 @@
           </v-card>
         </v-col>
       </v-row>
+      <consultDetail :dado="dado" :dialog="showDialog"></consultDetail>
     </v-container>
   </v-app>
 </template>
 
 <script>
 import axios from "axios";
+import ConsultDetailVue from './ConsultDetail.vue';
 
 export default {
+  components: {
+    consultDetail: ConsultDetailVue,
+  },
   name: "Consult",
   data() {
     return {
+      showDialog: false,
+      dado:[],
       msg: "Welcome to Your Vue.js App",
       languages: ["Portuguese", "English"],
       pt: {
@@ -264,13 +270,9 @@ export default {
           body: this.form,
         })
         .then((response) => {
-          alert(
-            "Probabilidade de infecção: " +
-              parseFloat(response.data[0]).toFixed(4) * 100 +
-              "%"
-          );
-          // alert(response.data)
-          this.$awn.success("Sucesso");
+          this.dado = response.data;
+          this.showDialog = true;
+          console.log(response);
         })
         .catch((e) => {
           console.log(e);
