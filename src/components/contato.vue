@@ -15,18 +15,23 @@
         <p id="p1">
           <span id="span1">{{ text.titulo }}</span
           ><br /><br />
-          Gustavo Maciel Pimenta -
+          <!--Gustavo Maciel Pimenta-->
+          G. M. Pimenta -
           <a href="gustavomacielp432@gmail.com">gustavomacielp432@gmail.com</a>
           <br />
-          Júlio César O. Mendes -
+          <!--Júlio César O. Mendes-->
+          J. C. O. Mendes -
           <a href="juliocomendes92@gmail.com">juliocomendes92@gmail.com</a>
           <br />
-          Maurilio B. Martins -
+          <!--Maurilio B. Martins - -->
+          M. B. Martins -
           <a href="mauriliosfc@gmail.com ">mauriliosfc@gmail.com </a>
           <br />
-          Flávio Henrique Batista de Souza -
+          <!--Flávio Henrique Batista de Souza - -->
+          F. H. B. Souza - 
           <a href="flabasouza@yahoo.com.br">flabasouza@yahoo.com.br</a><br />
-          Braulio RGM Couto -
+         <!-- Braulio RGM Couto - -->
+         B. R. Couto -
           <a href="coutobraulio@hotmail.com">coutobraulio@hotmail.com</a><br />
         </p>
       </div>
@@ -52,7 +57,7 @@ export default {
         titulo: 'PROJETO ISC E-MAILS PARA CONTATO:',
       },
       eng: {
-        titulo: 'ISC PROJECT CONTACT EMAILS:',
+        titulo: 'NOIS ISS PROJECT CONTACT EMAILS:',
       },
       text: {},
     };
