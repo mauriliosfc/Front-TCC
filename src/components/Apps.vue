@@ -48,6 +48,7 @@
                 <b>{{text.article}}:</b> {{text.descricao}}
                 <br><b>{{text.revista}}: Diamond Scientific Publishing</b>
                 <br><b>{{text.year}}:</b> 2021  
+                <br><b>DOi:</b><a href="https://doi.org/10.1093/ofid/ofaa439.1068" target="_blank">https://doi.org/10.1093/ofid/ofaa439.1068</a>
               </div>
             </v-list-item-content>
           </v-list-item>
@@ -102,7 +103,7 @@ export default {
       ],      
       pt : { 
         article: 'Artigo científico',
-        revista: 'Revista',
+        revista: 'JORNAL',
         year: 'ANO',
         welcome: 'BEM-VINDO AO GRUPO NOIS',
         descricao: "O Direciona SUS é um aplicativo destinado ao auxílio de pacientes direcionando-os aos serviços de atendimento do SUS de acordo com seus sintomas.",
@@ -112,10 +113,10 @@ export default {
       }, 
       eng : { 
         article: 'Scientific article',
-        revista: 'Magazine',
+        revista: 'JOURNA',
         year: 'Year',
         welcome: 'WELCOME TO GROUP NOIS',
-        descricao: "Direciona SUS is an application designed to help patients by directing them to SUS care services according to their symptoms.",
+        descricao: "DIRECIONA SUS IS AN APPLICATION DESIGNED TO HELP PATIENTS BY DIRECTING THEM TO SUS CARE SERVICES ACCORDING TO THEIR SYMPTOMS.",
         download: 'DOWNLOAD',
         artigo: 'SCIENTIFIC ARTICLE',
         copyright: "Copyright © 2021 Nois, All rights reserved."

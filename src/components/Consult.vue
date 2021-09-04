@@ -147,7 +147,6 @@
 <script>
 import axios from "axios";
 import ConsultDetailVue from './ConsultDetail.vue';
-
 export default {
   components: {
     consultDetail: ConsultDetailVue,
