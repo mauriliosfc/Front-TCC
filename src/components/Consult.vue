@@ -20,14 +20,16 @@
               </div>
             </v-toolbar>
             <v-card-text>
-              <v-form>
+              <v-form ref="form" v-model="valid" lazy-validation>
                 <v-row align="center" justify="center">
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-select
-                      v-model="form.Tipo_Cirurgia_Especifica"
+                      v-model="select"
                       :items="text_tce.tce_options"
+                      :rules="[(v) => !!v || 'Item is required']"
                       menu-props="auto"
                       :label="text.TCP"
+                      required
                     ></v-select>
                   </v-col>
                   <v-col class="d-flex" cols="12" sm="6">
@@ -35,8 +37,10 @@
                       :label="text.NDI"
                       min="0"
                       v-model="form.Num_Internacao"
+                      :rules="[(v) => !!v || 'Item is required']"
                       name="Num_Internacao"
                       type="number"
+                      required
                     />
                   </v-col>
                 </v-row>
@@ -46,8 +50,10 @@
                       :label="text.IDD"
                       min="0"
                       v-model="form.Idade_Anos"
+                      :rules="[(v) => !!v || 'Item is required']"
                       name="Idade_Anos"
                       type="number"
+                      required
                     />
                   </v-col>
                   <v-col class="d-flex" cols="12" sm="6">
@@ -55,8 +61,10 @@
                       :label="text.TAC"
                       min="0"
                       v-model="form.T_Ate_Cirurgia"
+                      :rules="[(v) => !!v || 'Item is required']"
                       name="T_Ate_Cirurgia"
                       type="number"
+                      required
                     />
                   </v-col>
                 </v-row>
@@ -67,7 +75,9 @@
                       min="0"
                       v-model="form.Num_Procedimentos"
                       name="Num_Procedimentos"
+                      :rules="[(v) => !!v || 'Item is required']"
                       type="number"
+                      required
                     />
                   </v-col>
                   <v-col class="d-flex" cols="12" sm="6">
@@ -76,8 +86,10 @@
                       min="1"
                       max="5"
                       v-model="form.Gravidade_ASA"
+                      :rules="[(v) => !!v || 'Item is required']"
                       name="Gravidade_ASA"
                       type="number"
+                      required
                     />
                   </v-col>
                 </v-row>
@@ -134,7 +146,13 @@
             <v-card-actions>
               <v-spacer />
               <v-btn color="red darken-2" @click="onReset">RESET</v-btn>
-              <v-btn color="primary" @click="onSubmit">{{ text.CON }}</v-btn>
+              <v-btn
+                :disabled="!valid"
+                class="mr-4"
+                color="primary"
+                @click="onSubmit"
+                >{{ text.CON }}</v-btn
+              >
             </v-card-actions>
           </v-card>
         </v-col>
@@ -146,7 +164,7 @@
 
 <script>
 import axios from "axios";
-import ConsultDetailVue from './ConsultDetail.vue';
+import ConsultDetailVue from "./ConsultDetail.vue";
 export default {
   components: {
     consultDetail: ConsultDetailVue,
@@ -154,8 +172,10 @@ export default {
   name: "Consult",
   data() {
     return {
+      valid: true,
+      select: null,
       showDialog: false,
-      dado:[],
+      dado: [],
       msg: "Welcome to Your Vue.js App",
       languages: ["Portuguese", "English"],
       pt: {
@@ -238,8 +258,16 @@ export default {
   beforeMount() {
     this.setStorage();
     this.setLanguage();
+    this.setValidate();
+    this.setReset();
   },
   methods: {
+    setValidate() {
+      this.form.onSubmit();
+    },
+    setReset() {
+      this.refs.form.onReset();
+    },
     setStorage() {
       if (sessionStorage.getItem("language") == null) {
         sessionStorage.setItem("language", "English");
@@ -258,6 +286,7 @@ export default {
     },
     async onSubmit() {
       console.log(this.form);
+      
       // await axios
       //   .post(`http://localhost:5001/buscar`, {
       await axios
