@@ -24,11 +24,11 @@
                 <v-row align="center" justify="center">
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-select
-                      v-model="select"
+                      v-model="form.Tipo_Cirurgia_Especifica"
                       :items="text_tce.tce_options"
-                      :rules="[(v) => !!v || 'Item is required']"
                       menu-props="auto"
                       :label="text.TCP"
+                      :rules="[(v) => !!v || 'Item is required']"
                       required
                     ></v-select>
                   </v-col>
@@ -37,9 +37,9 @@
                       :label="text.NDI"
                       min="0"
                       v-model="form.Num_Internacao"
-                      :rules="[(v) => !!v || 'Item is required']"
                       name="Num_Internacao"
                       type="number"
+                      :rules="[(v) => !!v || 'Item is required']"
                       required
                     />
                   </v-col>
@@ -50,9 +50,9 @@
                       :label="text.IDD"
                       min="0"
                       v-model="form.Idade_Anos"
-                      :rules="[(v) => !!v || 'Item is required']"
                       name="Idade_Anos"
                       type="number"
+                      :rules="[(v) => !!v || 'Item is required']"
                       required
                     />
                   </v-col>
@@ -61,9 +61,9 @@
                       :label="text.TAC"
                       min="0"
                       v-model="form.T_Ate_Cirurgia"
-                      :rules="[(v) => !!v || 'Item is required']"
                       name="T_Ate_Cirurgia"
                       type="number"
+                      :rules="[(v) => !!v || 'Item is required']"
                       required
                     />
                   </v-col>
@@ -75,8 +75,8 @@
                       min="0"
                       v-model="form.Num_Procedimentos"
                       name="Num_Procedimentos"
-                      :rules="[(v) => !!v || 'Item is required']"
                       type="number"
+                      :rules="[(v) => !!v || 'Item is required']"
                       required
                     />
                   </v-col>
@@ -86,9 +86,9 @@
                       min="1"
                       max="5"
                       v-model="form.Gravidade_ASA"
-                      :rules="[(v) => !!v || 'Item is required']"
                       name="Gravidade_ASA"
                       type="number"
+                      :rules="[(v) => !!v || 'Item is required']"
                       required
                     />
                   </v-col>
@@ -145,14 +145,8 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer />
-              <v-btn color="red darken-2" @click="onReset">RESET</v-btn>
-              <v-btn
-                :disabled="!valid"
-                class="mr-4"
-                color="primary"
-                @click="onSubmit"
-                >{{ text.CON }}</v-btn
-              >
+              <v-btn  color="red darken-2" class="mr-4" @click="onReset">RESET</v-btn>
+              <v-btn :disabled="!valid" color="primary" class="mr-4" @click="onSubmit">{{ text.CON }}</v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -173,7 +167,6 @@ export default {
   data() {
     return {
       valid: true,
-      select: null,
       showDialog: false,
       dado: [],
       msg: "Welcome to Your Vue.js App",
@@ -258,15 +251,15 @@ export default {
   beforeMount() {
     this.setStorage();
     this.setLanguage();
-    this.setValidate();
-    this.setReset();
+    this.validate();
+    this.reset ();
   },
   methods: {
-    setValidate() {
-      this.form.onSubmit();
+    validate () {
+        this.$refs.form.onSubmit()
     },
-    setReset() {
-      this.refs.form.onReset();
+    reset  () {
+        this.$refs.form.onReset()
     },
     setStorage() {
       if (sessionStorage.getItem("language") == null) {
@@ -286,7 +279,6 @@ export default {
     },
     async onSubmit() {
       console.log(this.form);
-      
       // await axios
       //   .post(`http://localhost:5001/buscar`, {
       await axios
