@@ -167,6 +167,7 @@ export default {
   data() {
     return {
       valid: true,
+
       showDialog: false,
       dado: [],
       msg: "Welcome to Your Vue.js App",
