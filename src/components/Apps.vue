@@ -48,7 +48,7 @@
                 <b>{{text.article}}:</b> {{text.descricao}}
                 <br><b>{{text.revista}}: Diamond Scientific Publishing</b>
                 <br><b>{{text.year}}:</b> 2021  
-                <br><b>DOi:</b><a href="https://doi.org/10.1093/ofid/ofaa439.1068" target="_blank">https://doi.org/10.1093/ofid/ofaa439.1068</a>
+                <br><b>DOi:</b><a href="https://www.doi.org/10.33422/11th.restconf.2021.03.45" target="_blank">https://www.doi.org/10.33422/11th.restconf.2021.03.45</a>
               </div>
             </v-list-item-content>
           </v-list-item>
