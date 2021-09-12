@@ -8,7 +8,7 @@
     <div id="meio">
       <div id="buttongeral">
         <button class="button1"><span>FERRAMENTA DA ISC</span></button>
-        <button class="button2"><span>APLICATIVOS CIENTIFICOS</span></button>
+        <button class="button2"><span>SCIENTFIC MOBILE APPLICATION</span></button>
       </div>
     </div>
     <div id="rodape">
