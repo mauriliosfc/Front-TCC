@@ -11,10 +11,24 @@
           v-on:change="onChange"
         ></v-combobox>
       </div>
-      <button @click="goTuLogin" class="btnLogin">LOGIN <br><span class="pisca">Access the Application</span>
-      </button>
-      <img src="../assets/nois.png" alt="NOIS" />
-      <h1>{{ text.welcome }}</h1>
+      <div id="logo">
+        <img src="../assets/nois.png" alt="NOIS" />
+        <h1>{{ text.welcome }}</h1>
+      </div>
+      <div id="btnmenu">
+        <button @click="goTuLogin" class="btnLogin">
+          LOGIN <br /><span class="pisca">Access the Application</span>
+        </button>
+        <button @click="goTuDescription" class="btartigo1">
+          <span>{{ text.artigos }}</span>
+        </button>
+        <button @click="goTuContato" class="btcontatos">
+          <span>{{ text.contatos }}</span>
+        </button>
+        <button @click="goTuEstatiticas" class="btestatiticas">
+          <span>{{ text.estatisticas }}</span>
+        </button>
+      </div>
       <!--<img v-bind:src="foto.url" v-bind:alt="foto.titulo">-->
     </div>
     <div id="meio">
@@ -46,15 +60,6 @@
       <div class="copyright">
         <span>{{ text.copyright }}</span>
       </div>
-      <button @click="goTuDescription" class="btartigo1">
-        <span>{{ text.artigos }}</span>
-      </button>
-      <button @click="goTuContato" class="btcontatos">
-        <span>{{ text.contatos }}</span>
-      </button>
-      <button @click="goTuEstatiticas" class="btestatiticas">
-        <span>{{ text.estatisticas }}</span>
-      </button>
     </div>
   </div>
 </template>
@@ -79,7 +84,7 @@ export default {
         estatisticas: "ESTATÍSTICAS E DADOS",
         artigos: "ARTIGOS",
         contatos: "CONTATOS",
-        copyright: "Copyright© 2021 Nois, Todos os direitos reservados."
+        copyright: "Copyright© 2021 Nois, Todos os direitos reservados.",
       },
       eng: {
         welcome: "WELCOME TO THE NOIS GROUP",
@@ -95,7 +100,7 @@ export default {
         estatisticas: "STATISTICS AND DATA",
         artigos: "ARTICLES",
         contatos: "CONTACTS",
-        copyright: "Copyright © 2021 Nois, All rights reserved."
+        copyright: "Copyright © 2021 Nois, All rights reserved.",
       },
       text: {},
     };
@@ -167,25 +172,7 @@ h1 {
   align-items: center;
   display: table;
 }
-.btnLogin {
-  background-color: #005fc4;
-  width: 210px;
-  height: 45px;
-  border-radius: 5px;
-  font-size: 2em;
-  color: #fff;
-  opacity: 0.8;
-  filter: alpha(opacity=90);
-  font-size: 15px;
-  color: white;
-  position: absolute;
-  bottom: 0;
-  z-index: 50;
-  top: 5%;
-  right: 0;
-  float: right;
-  margin-right: 5px;
-}
+
 #conteudo {
   width: 100vw;
   height: 100vh;
@@ -253,74 +240,80 @@ p {
   margin: 15px;
   color: black;
 }
-.btartigo1 {
-  background-color: #3072b9;
-  width: 210px;
+.btestatiticas {
+  background-color: #696969;
+  width: 9%;
   height: 45px;
   border-radius: 5px;
-  font-size: 2em;
   color: #fff;
   opacity: 0.8;
   filter: alpha(opacity=90);
-  font-size: 15px;
   color: white;
-  position: absolute;
-  bottom: 0;
-  z-index: 50;
-  top: 11%;
-  right: 215px;
+  top: 2%;
+  right: 645px;
   float: right;
-  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 300%; 
+}
+.btartigo1 {
+  background-color: #3072b9;
+  width: 9%;
+  height: 45px;
+  border-radius: 5px;
+  color: #fff;
+  opacity: 0.8;
+  filter: alpha(opacity=90);
+  color: white;
+  right: 430px;
+  float: right;
+  margin-left: 5px;
+  font-size: 300%; 
 }
 .btcontatos {
   background-color: #fa4747;
-  width: 210px;
+  width: 9%;
   height: 45px;
   border-radius: 5px;
-  font-size: 2em;
   color: #fff;
   opacity: 0.8;
   filter: alpha(opacity=90);
-  font-size: 15px;
   color: white;
-  position: absolute;
-  bottom: 0;
-  z-index: 50;
-  top: 11%;
+  right: 215px;
+  float: right;
+  margin-left: 5px;
+  font-size: 300%; 
+}
+.btnLogin {
+  background-color: #005fc4;
+  width: 9%;
+  height: 45px;
+  border-radius: 5px;
+  color: #fff;
+  opacity: 0.8;
+  filter: alpha(opacity=90);
+  color: white;
   right: 0;
   float: right;
-  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 300%; 
 }
-.btestatiticas {
-  background-color: #696969;
-  width: 210px;
-  height: 45px;
-  border-radius: 5px;
-  font-size: 2em;
-  color: #fff;
-  opacity: 0.8;
-  filter: alpha(opacity=90);
-  font-size: 15px;
-  color: white;
+#btnmenu{
+  top: 2%;
   position: absolute;
-  bottom: 0;
-  z-index: 50;
-  top: 11%;
-  right: 430px;
+  width: 100%;
   float: right;
-  margin-right: 5px;
+  font-size: 30%;
 }
 .copyright {
   text-align: center;
   color: white;
   font-size: 10px;
 }
-.pisca{
+.pisca {
   animation: blinker 1s linear infinite;
 }
-
 @keyframes blinker {
-   100% {
+  100% {
     opacity: 100;
     color: rgb(255, 0, 0);
   }

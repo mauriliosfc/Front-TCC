@@ -44,7 +44,7 @@ export default {
   methods: {
     getDados() {
       for (let index = 0; index < this.dado.length; index++) {
-        this.chartData.push([index, parseFloat(this.dado[index])]);
+        this.chartData.push([index, parseInt(this.dado[index])]);
       }
     },
   },
