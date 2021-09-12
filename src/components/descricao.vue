@@ -17,7 +17,7 @@
       </div>
       <div id="btnmenu">
         <button @click="goTuLogin" class="btnLogin">
-          LOGIN <br /><span class="pisca">Access the Application</span>
+        <span class="pisca">LOGIN<br> Access the Application</span>
         </button>
         <button @click="goTuDescription" class="btartigo1">
           <span>{{ text.artigos }}</span>
@@ -256,7 +256,7 @@ p {
   font-size: 300%; 
 }
 .btartigo1 {
-  background-color: #3072b9;
+  background-color: #44df6a;
   width: 9%;
   height: 45px;
   border-radius: 5px;
