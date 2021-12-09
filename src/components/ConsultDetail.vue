@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialog" width="500">
+  <v-dialog v-model="dialog" width="70%">
     <v-container  v-if="chartData.length>5">
       <GChart type="LineChart" :data="chartData" :options="chartOptions"/>
     </v-container>
@@ -43,8 +43,9 @@ export default {
   },
   methods: {
     getDados() {
+      this.chartData = [["index", "value"]];
       for (let index = 0; index < this.dado.length; index++) {
-        this.chartData.push([index, parseInt(this.dado[index])]);
+        this.chartData.push([index, parseFloat(this.dado[index]*100)]);
       }
     },
   },
