@@ -18,6 +18,8 @@ export default {
       // Array will be automatically processed with visualization.arrayToDataTable function
       chartData: [["index", "value"]],
       chartOptions: {
+        hAxis: { title: "AXIS Y", titleTextStyle: { color: "#333" } },
+        vAxis: { title: "AXIS X", titleTextStyle: { color: "#333" } },
         chart: {
           title: "Company Performance",
           subtitle: "Sales, Expenses, and Profit: 2014-2017",
