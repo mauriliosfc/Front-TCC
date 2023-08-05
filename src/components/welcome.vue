@@ -2,14 +2,8 @@
   <div id="geral">
     <div id="painel">
       <div id="combobox">
-        <v-combobox
-          @change="setLanguage()"
-          v-model="language"
-          :items="languages"
-          label="Language"
-          :auto-select-first="true"
-          v-on:change="onChange"
-        ></v-combobox>
+        <v-combobox @change="setLanguage()" v-model="language" :items="languages" label="Language"
+          :auto-select-first="true" v-on:change="onChange"></v-combobox>
       </div>
       <img src="../assets/nois.png" alt="NOIS" />
       <h1>{{ text.welcome }}</h1>
@@ -94,9 +88,11 @@ export default {
 template {
   background: red;
 }
+
 h1 {
   color: #3072b9;
 }
+
 #painel {
   width: 100%;
   height: 13 130px;
@@ -104,23 +100,27 @@ h1 {
   box-shadow: 0px 0.1px 5px rgb(95, 95, 95);
   position: absolute;
 }
+
 #combobox {
   width: 110px;
   height: 35px;
   position: absolute;
   right: 0 px;
 }
+
 img {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
+
 h1 {
   display: block;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 }
+
 .meio {
   position: absolute;
   background: #426d9b;
@@ -150,6 +150,7 @@ h1 {
   opacity: 0.8;
   filter: alpha(opacity=90);
 }
+
 .button2 {
   width: 450px;
   height: 250px;
@@ -169,9 +170,9 @@ h1 {
 
 #geral {
   position: relative;
-  background-image: url(../assets/celebro.png);
   background-size: cover;
 }
+
 #rodape {
   width: 100%;
   background: #424242;
@@ -180,22 +181,25 @@ h1 {
   position: fixed;
   z-index: 9999;
 }
+
 a {
   margin: 10px;
 }
+
 a:link {
   color: green;
   text-decoration: none;
 }
+
 .imagem1 {
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 05px;
 }
+
 .copyright {
   text-align: center;
   color: white;
   font-size: 10px;
-}
-</style>
+}</style>

@@ -1,6 +1,6 @@
 <template>
-  <v-app id="app" >
-    <router-view v-if="!user.loggedIn" />
+  <v-app id="app">
+    <router-view v-if="user.loggedIn" />
     <div v-else>
       <v-app-bar color="grey darken-2" dark>
         <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
@@ -16,7 +16,7 @@
               </v-list-item-icon>
               <v-list-item-title>Home</v-list-item-title>
             </v-list-item>
-           <!-- <v-list-item>
+            <!-- <v-list-item>
               <v-list-item-icon>
                 <v-icon>mdi-account</v-icon>
               </v-list-item-icon>
@@ -52,20 +52,20 @@ export default {
         .auth()
         .signOut()
         .then(() => {
-          this.$router.replace({
+          this.$router.push({
             name: "login"
           });
         });
     },
     goToConsult() {
-       this.$router.replace({
-          name: "consult"
-        });
+      this.$router.push({
+        name: "consult"
+      });
     },
     goToWelcome() {
-       this.$router.replace({
-          name: "welcome"
-        });
+      this.$router.push({
+        name: "home"
+      });
     }
   }
 };
