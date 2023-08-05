@@ -9,9 +9,10 @@
         <div class="image-container">
           <img src="../assets//retang1.png" alt="Imagem">
           <div class="centered-text">
-            <h5 :style="{ color: '#4BC3CC' }">Bem vindo á grupo NOIS</h5>
-            <h3 :style="{ color: '#262626' }">Descritivo da Ferramenta</h3>
-            <p class="pimg" :class="{ 'grid-container-vertical': isVerticalMenu }">Atualmente contamos com uma gama de
+            <h5 :style="{ color: '#6427cc' }">Bem vindo á grupo NOIS</h5>
+            <h3 :style="{ color: '#4BC3CC' }">Descritivo da Ferramenta</h3>
+            <p class="pimg" :class="{ 'grid-container-vertical': isVerticalMenu }" :style="`font-size: ${fontSize}vw`">
+              Atualmente contamos com uma gama de
               cirurgias que foram estudados ao longo de dois anos em
               hospitais de Belo Horizonte. Ao acessar um formulário, o usuário pode inserir os dados da cirurgia e o
               modelo
@@ -26,8 +27,8 @@
         <div class="image-container">
           <img src="../assets//retang2.png" alt="Imagem">
           <div class="centered-text">
-            <h3 :style="{ color: '#262626' }">Proposta da Ferramenta</h3>
-            <p class="pimg">O Software visa ajudar a comunidade médica a otimizar o grau de certeza nos casos de ISC. Esta
+            <h3 :style="{ color: '#4BC3CC' }">Proposta da Ferramenta</h3>
+            <p class="pimg" :style="`font-size: ${fontSize}vw`">O Software visa ajudar a comunidade médica a otimizar o grau de certeza nos casos de ISC. Esta
               aplicação suporta uma série de cirurgias através das análises previamente inseridas nos algoritmos de
               predição utilizados.Nossa principal proposta é levar ao nosso sistema consultas com a gama de cirurgias
               apresentadas, por meio de variáveis selecionadas, para auxiliar na tomada de decisão médica.Deixe nosso
@@ -40,8 +41,8 @@
         <div class="image-container">
           <img src="../assets//retang3.png" alt="Imagem">
           <div class="centered-text">
-            <h3 :style="{ color: '#262626' }">Conteúdo Científico</h3>
-            <p class="pimg">Nossa ferramenta não se baseia somente em dados, mas no rigor científico que este tipo de
+            <h3 :style="{ color: '#4BC3CC' }" >Conteúdo Científico</h3>
+            <p class="pimg" :style="`font-size: ${fontSize}vw`">Nossa ferramenta não se baseia somente em dados, mas no rigor científico que este tipo de
               demanda requer. Várias publicações, em congressos europeus e norte americanos renomados, como: IDWEEK,
               Decennial SHEA, ICPIC, além de revistas como: OFID (Open Forum Infections Diseases), Infection Control &
               Hospital Epidemiology (Cambridge Core), Antimicrobial Resistance & Infection Control; demonstram o
@@ -76,6 +77,7 @@ export default {
   data() {
     return {
       isVerticalMenu: false,
+      fontSize: 1,
     };
   },
   components: {
@@ -84,6 +86,7 @@ export default {
   methods: {
     checkScreenWidth() {
       this.isVerticalMenu = window.innerWidth <= 758;
+      this.fontSize = this.isVerticalMenu ? 2 : 1; 
     },
   },
   mounted() {
