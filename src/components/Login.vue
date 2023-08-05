@@ -75,7 +75,6 @@ export default {
 <style>
 #inspire{
   position: relative;
-  background-image: url(../assets/celebro.png);
   background-size: cover;
 }
 

@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <menu-horizontal></menu-horizontal>
     <div id="comboboxContatos">
       <v-combobox
         @change="setLanguage()"
@@ -44,7 +45,11 @@
 </template>
 
 <script>
+import MenuHorizontal from './MenuHorizontal.vue';
 export default {
+  components: {
+    MenuHorizontal
+  },
   data() {
     return {
       language: "",

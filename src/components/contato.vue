@@ -1,5 +1,8 @@
 <template>
   <div id="fundo">
+    <div class="menu-container">
+      <menu-horizontal></menu-horizontal>
+    </div>
     <div id="principal">
       <div id="esquerda">
         <div id="comboboxContatos">
@@ -48,7 +51,11 @@
 </template>
 
 <script>
+import MenuHorizontal from './MenuHorizontal.vue';
 export default {
+  components: {
+    MenuHorizontal
+  },
   data() {
     return {
       language: 'English',
@@ -88,7 +95,6 @@ export default {
 <style>
 #fundo {
   position: relative;
-  background-image: url(../assets/celebro.png);
   background-size: cover;
   widows: 100vh;
   height: 100vh;
@@ -98,7 +104,8 @@ export default {
   align-items: center;
 }
 #principal {
-  background-color: rgb(219, 226, 255);
+  margin-top: 50px;
+  background-image: linear-gradient(to right, #61d3db, #4a8df1);
   width: 90%;
   height: 90%;
   border-radius: 10px;
@@ -125,7 +132,7 @@ export default {
 }
 #traco {
   height: 570px; /*Altura da linha*/
-  border-left: 2px solid black;
+  border-left: 2px solid rgb(255, 255, 255);
   display: flex;
   display: block;
   margin: 0 auto;
@@ -150,10 +157,14 @@ export default {
 #span1 {
   font-family: "Courier New", Courier, monospace;
   font-size: 25px;
-  color: rgb(41, 41, 41);
+  color: rgb(255, 255, 255);
 }
 #comboboxContatos {
   width: 110px;
   height: 50px;
+}
+
+a{
+  color: white;
 }
 </style>

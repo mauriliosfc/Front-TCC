@@ -93,17 +93,6 @@
                     />
                   </v-col>
                 </v-row>
-                <!-- <v-row>
-                  <v-col class="d-flex" cols="12" sm="6">
-                    <v-text-field
-                      :label="text.DC"
-                      min=0
-                      v-model="form.Duracao_Cirurgia"
-                      name="Duracao_Cirurgia"
-                      type="number"
-                    />
-                  </v-col>
-                </v-row> -->
                 <v-row>
                   <v-col class="d-flex" cols="12" sm="6">
                     <v-checkbox
@@ -279,27 +268,32 @@ export default {
       }
     },
     async onSubmit() {
-      console.log(this.form);
-      // await axios
-      //   .post(`http://localhost:5001/buscar`, {
-      await axios
-        .post(`https://api.infectioninsurgicalsites.com/buscar`, {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Content-Type": "application/json;charset=UTF-8",
-          },
-          body: this.form,
-        })
-        .then((response) => {
-          this.dado = response.data;
-          this.showDialog = true;
-          console.log(response);
-        })
-        .catch((e) => {
-          console.log(e);
-          this.$awn.alert("Erro");
-        });
+  console.log(this.form);
+  const authToken = "YOUR_AUTH_TOKEN"; // Replace this with your actual token
+
+  const config = {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Content-Type": "application/json;charset=UTF-8",
+      Authorization: `Bearer ${authToken}`, // Add the token to the Authorization header
     },
+  };
+
+  try {
+    const response = await axios.post(
+      "https://prediction-mls.eastus2.inference.ml.azure.com/score",
+      this.form,
+      config
+    );
+
+    this.dado = response.data;
+    this.showDialog = true;
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+    this.$awn.alert("Erro");
+  }
+},
     onReset(evt) {
       evt.preventDefault();
       // Reset our form values
@@ -317,7 +311,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1,
 h2 {

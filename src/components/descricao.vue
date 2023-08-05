@@ -186,7 +186,6 @@ h1 {
 
 #geral {
   position: relative;
-  background-image: url(../assets/celebro.png);
   background-size: cover;
 }
 a {
