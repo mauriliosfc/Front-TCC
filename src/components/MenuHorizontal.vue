@@ -22,7 +22,6 @@ export default {
     return {
       menuItems: [
         { label: "HOME", link: "home" },
-        { label: "ESTATÍSTICAS E DADOS", link: "estatiticas" },
         { label: "TIMELINE", link: "timeline" },
         { label: "CONTATO", link: "contato" },
       ],
