@@ -3,8 +3,11 @@
     <menu-horizontal v-if="isVerticalMenu" />
     <div class="grid-container" :class="{ 'grid-container-vertical': isVerticalMenu }">
       <div class="menu-container" :class="{ 'menu-container-vertical': isVerticalMenu }">
-        <v-switch v-model="model" hide-details true-value="Português" false-value="English" :label="`${model}`"
-          class="ml-3"></v-switch>
+        <v-switch v-model="model" hide-details true-value="Português" false-value="English" class="ml-3">
+          <template #label>
+            <span style="color: white;">{{ model }}</span>
+          </template>
+        </v-switch>
         <menu-horizontal v-if="!isVerticalMenu" />
       </div>
       <div class="content">
@@ -13,7 +16,8 @@
           <div class="centered-text">
             <h5 :style="{ color: '#6427cc' }">{{ bemVindo }}</h5>
             <h3 :style="{ color: '#4BC3CC' }">{{ titulo1 }}</h3>
-            <p class="pimg" :class="{ 'grid-container-vertical': isVerticalMenu }" :style="`font-size: ${fontSize}vw`">{{ descricao1 }}</p>
+            <p class="pimg" :class="{ 'grid-container-vertical': isVerticalMenu }" :style="`font-size: ${fontSize}vw`">{{
+              descricao1 }}</p>
           </div>
         </div>
       </div>
@@ -25,7 +29,8 @@
           <div class="centered-text">
             <h3 :style="{ color: '#4BC3CC' }">{{ titulo2 }}</h3>
             <!--<p class="pimg" :style="`font-size: ${fontSize}vw`"></p>-->
-            <p class="pimg" :class="{ 'grid-container-vertical': isVerticalMenu }" :style="`font-size: ${fontSize}vw`">{{ descricao2 }}</p>
+            <p class="pimg" :class="{ 'grid-container-vertical': isVerticalMenu }" :style="`font-size: ${fontSize}vw`">{{
+              descricao2 }}</p>
           </div>
         </div>
       </div>
@@ -34,7 +39,8 @@
           <img src="../assets//retang3.png" alt="Imagem">
           <div class="centered-text">
             <h3 :style="{ color: '#4BC3CC' }">{{ titulo3 }}</h3>
-            <p class="pimg" :class="{ 'grid-container-vertical': isVerticalMenu }" :style="`font-size: ${fontSize}vw`">{{ descricao3 }}</p>
+            <p class="pimg" :class="{ 'grid-container-vertical': isVerticalMenu }" :style="`font-size: ${fontSize}vw`">{{
+              descricao3 }}</p>
           </div>
         </div>
       </div>
@@ -198,5 +204,4 @@ export default {
 .footer-text {
   font-size: 14px;
   color: white;
-}
-</style>
+}</style>

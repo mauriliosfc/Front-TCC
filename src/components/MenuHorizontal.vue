@@ -22,8 +22,7 @@ export default {
     return {
       menuItems: [
         { label: "HOME", link: "home" },
-        { label: "TIMELINE", link: "timeline" },
-        { label: "CONTATO", link: "contato" },
+        { label: "CONTACTS", link: "contato" },
       ],
       isVerticalMenu: false,
     };
@@ -32,7 +31,7 @@ export default {
     handleItemClick(item) {
       if (item.link === "home") {
         this.$router.push({ path: "/" });
-      } else if (item.link === "estatiticas" || item.link === "timeline" || item.link === "contato") {
+      } else {
         this.$router.push({ path: item.link });
       }
     },
@@ -117,7 +116,7 @@ export default {
 
 .gradient-button {
   width: 100px;
-  height: 50px;
+  height: 60px;
   background-image: linear-gradient(to right, #2C7AED, #4BC3CC);
   color: #fff;
   border-radius: 5px;
@@ -128,6 +127,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 10px;
 }
 
 .gradient-button-vertical {

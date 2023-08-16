@@ -1,23 +1,20 @@
 <template>
   <div id="fundo">
     <div class="menu-container">
+      <template>
+        <v-switch v-model="model" hide-details true-value="Português" false-value="English" class="ml-3">
+          <template #label>
+            <span style="color: white;">{{ model }}</span>
+          </template>
+        </v-switch>
+      </template>
+
       <menu-horizontal></menu-horizontal>
     </div>
     <div id="principal">
       <div id="esquerda">
-        <div id="comboboxContatos">
-          <v-combobox
-            @change="setLanguage()"
-            v-model="language"
-            :items="languages"
-            label="Language"
-            :auto-select-first="true"
-            v-on:change="onChange"
-          ></v-combobox>
-        </div>
         <p id="p1">
-          <span id="span1">{{ text.titulo }}</span
-          ><br /><br />
+          <span id="span1">{{ titulo }}</span><br /><br />
           <!--Gustavo Maciel Pimenta-->
           G. M. Pimenta -
           <a href="gustavomacielp432@gmail.com">gustavomacielp432@gmail.com</a>
@@ -31,20 +28,16 @@
           <a href="mauriliosfc@gmail.com ">mauriliosfc@gmail.com </a>
           <br />
           <!--Flávio Henrique Batista de Souza - -->
-          F. H. B. Souza - 
+          F. H. B. Souza -
           <a href="flabasouza@yahoo.com.br">flabasouza@yahoo.com.br</a><br />
-         <!-- Braulio RGM Couto - -->
-         B. R. Couto -
+          <!-- Braulio RGM Couto - -->
+          B. R. Couto -
           <a href="coutobraulio@hotmail.com">coutobraulio@hotmail.com</a><br />
         </p>
       </div>
       <div id="traco"></div>
       <div id="direita">
-        <img
-          id="img1"
-          src="../assets/Logo_Grupo_Transp_Grande.png"
-          alt="NOIS"
-        />
+        <img id="img1" src="../assets/Logo_Grupo_Transp_Grande.png" alt="NOIS" />
       </div>
     </div>
   </div>
@@ -58,35 +51,12 @@ export default {
   },
   data() {
     return {
-      language: 'English',
-      languages: ['Português', 'English'],
-      pt: {
-        titulo: 'PROJETO ISC E-MAILS PARA CONTATO:',
-      },
-      eng: {
-        titulo: 'NOIS ISS PROJECT CONTACT EMAILS:',
-      },
-      text: {},
+      model: 'English',
     };
   },
-  beforeMount() {
-    this.setStorage();
-    this.setLanguage();
-  },
-  methods: {
-    setStorage() {
-      if (sessionStorage.getItem("language") == null) {
-        sessionStorage.setItem("language", "English");
-      }
-      this.language = sessionStorage.getItem("language");
-    },
-    setLanguage() {
-      sessionStorage.setItem("language", this.language);
-      if (sessionStorage.getItem("language") == "English") {
-        this.text = this.eng;
-      } else {
-        this.text = this.pt;
-      }
+  computed: {
+    titulo() {
+      return this.model === 'Português' ? 'PROJETO ISC E-MAILS PARA CONTATO:' : 'NOIS ISS PROJECT CONTACT EMAILS:';
     },
   },
 };
@@ -102,17 +72,18 @@ export default {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  background-image: linear-gradient(to right, #61d3db, #4a8df1);
 }
+
 #principal {
   margin-top: 50px;
-  background-image: linear-gradient(to right, #61d3db, #4a8df1);
-  width: 90%;
-  height: 90%;
-  border-radius: 10px;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 #esquerda {
   position: relative;
   float: left;
@@ -123,6 +94,7 @@ export default {
   margin-left: auto;
   margin-right: auto;
 }
+
 #direita {
   position: relative;
   float: right;
@@ -130,20 +102,24 @@ export default {
   height: 90%;
   margin: 10px;
 }
+
 #traco {
-  height: 570px; /*Altura da linha*/
+  height: 570px;
+  /*Altura da linha*/
   border-left: 2px solid rgb(255, 255, 255);
   display: flex;
   display: block;
   margin: 0 auto;
   opacity: 0.2;
 }
+
 #img1 {
   position: relative;
   opacity: 0.4;
   top: 50%;
   transform: translateY(-50%);
 }
+
 #p1 {
   font-family: "Courier New", Courier, monospace;
   font-size: 14px;
@@ -154,17 +130,19 @@ export default {
   transform: translate(-50%, -50%);
   color: rgb(41, 41, 41);
 }
+
 #span1 {
   font-family: "Courier New", Courier, monospace;
   font-size: 25px;
   color: rgb(255, 255, 255);
 }
+
 #comboboxContatos {
   width: 110px;
   height: 50px;
 }
 
-a{
+a {
   color: white;
 }
 </style>
