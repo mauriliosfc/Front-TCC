@@ -73,11 +73,11 @@ export default {
 #inspire {
   position: relative;
   background-size: cover;
-  background-image: linear-gradient(to right, #4BC3CC, #2C7AED);
+  background-image: linear-gradient(to right, #2C7AED, #4BC3CC);
 }
 
 .btn {
-  background-image: linear-gradient(to right, #4BC3CC, #2C7AED);
+  background-image: linear-gradient(to right, #2C7AED, #4BC3CC);
   color: white;
 }
 </style>
