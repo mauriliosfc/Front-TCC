@@ -3,14 +3,14 @@
     <menu-horizontal v-if="isVerticalMenu" />
     <div class="grid-container" :class="{ 'grid-container-vertical': isVerticalMenu }">
       <div class="menu-container" :class="{ 'menu-container-vertical': isVerticalMenu }">
-        <v-switch v-model="model" hide-details true-value="Português" false-value="English" class="ml-3">
+        <v-switch v-model="model" hide-details true-value="Português" false-value="English" class="ml-3" style="position: absolute; top: 0; right: 0; margin-right: 35px;">
           <template #label>
-            <span style="color: white;">{{ model }}</span>
+            <span >{{ model }}</span>
           </template>
         </v-switch>
         <menu-horizontal v-if="!isVerticalMenu" />
       </div>
-      <div class="content">
+      <div class="content" :class="{ 'content-vertical': isVerticalMenu }" >
         <div class="image-container">
           <img src="../assets//retang1.png" alt="Imagem">
           <div class="centered-text">
@@ -21,9 +21,9 @@
           </div>
         </div>
       </div>
-      <div class="content"><img src="../assets/bisturi.png" /></div>
-      <div class="content"><img src="../assets/ren.png" /></div>
-      <div class="content">
+      <div cclass="content" :style="{ display: isVerticalMenu ? 'none' : 'flex' }"  ><img src="../assets/bisturi.png" /></div>
+      <div class="content" :style="{ display: isVerticalMenu ? 'none' : 'flex' }" ><img src="../assets/ren.png" /></div>
+      <div class="content" :class="{ 'content-vertical': isVerticalMenu }" >
         <div class="image-container">
           <img src="../assets//retang2.png" alt="Imagem">
           <div class="centered-text">
@@ -34,7 +34,7 @@
           </div>
         </div>
       </div>
-      <div class="content">
+      <div class="content" :class="{ 'content-vertical': isVerticalMenu }">
         <div class="image-container">
           <img src="../assets//retang3.png" alt="Imagem">
           <div class="centered-text">
@@ -44,7 +44,7 @@
           </div>
         </div>
       </div>
-      <div class="content"><img src="../assets/cel.png" /></div>
+      <div class="content" v-if="!isVerticalMenu"><img src="../assets/cel.png" /></div>
       <div>
       </div>
     </div>
@@ -106,7 +106,7 @@ export default {
   },
   methods: {
     checkScreenWidth() {
-      this.isVerticalMenu = window.innerWidth <= 758;
+      this.isVerticalMenu = window.innerWidth <= 930;
       this.fontSize = this.isVerticalMenu ? 2 : 1;
     },
   },
@@ -150,6 +150,10 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.content-vertical{
+  height: 10%;
 }
 
 .content img {

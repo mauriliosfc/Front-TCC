@@ -1,6 +1,6 @@
 <template>
   <v-app id="app">
-    <router-view v-if="!user.loggedIn" />
+    <router-view v-if="user.loggedIn" />
     <div v-else>
       <v-app-bar color="grey darken-2" dark>
         <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
