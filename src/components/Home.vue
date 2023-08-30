@@ -53,8 +53,8 @@
       <div>
         <h1 :style="{ color: '#262626', marginBottom: '20px' }">{{ tituloVideo }}</h1>
       </div>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/EKrTlyWpd24" frameborder="0"
-        allowfullscreen></iframe>
+      <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/EKrTlyWpd24" frameborder="0"
+        allowfullscreen></iframe>-->
     </div>
 
     <div class="footer">
