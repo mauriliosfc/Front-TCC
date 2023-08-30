@@ -1,13 +1,11 @@
 <template>
   <div id="fundo">
     <div class="menu-container">
-      <template>
-        <v-switch v-model="model" hide-details true-value="Português" false-value="English" class="ml-3">
+      <v-switch v-model="model" hide-details true-value="Português" false-value="English" class="ml-3" style="position: absolute; top: 0; right: 0; margin-right: 35px;">
           <template #label>
-            <span style="color: white;">{{ model }}</span>
+            <span >{{ model }}</span>
           </template>
         </v-switch>
-      </template>
 
       <menu-horizontal></menu-horizontal>
     </div>
