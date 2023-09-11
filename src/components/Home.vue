@@ -49,13 +49,12 @@
       </div>
     </div>
 
-    <!--<div class="centered-video">
+    <div class="centered-video">
       <div>
         <h1 :style="{ color: '#262626', marginBottom: '20px' }">{{ tituloVideo }}</h1>
       </div>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/EKrTlyWpd24" frameborder="0"
-        allowfullscreen></iframe>
-    </div>-->
+      <iframe src="https://www.youtube.com/embed/woX7hnXM2bk" title="Infections Prediction" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
 
     <div class="footer">
       <p class="footer-text">Copyright © 2013-2022. Todos os direitos reservados.</p>
