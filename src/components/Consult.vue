@@ -134,8 +134,9 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer />
+              <v-btn  color="yellow darken-2" class="mr-4" @click="backpage()">Voltar</v-btn>
               <v-btn  color="red darken-2" class="mr-4" @click="onReset">RESET</v-btn>
-              <v-btn :disabled="!valid" color="primary" class="mr-4" @click="onSubmit">{{ text.CON }}</v-btn>
+              <v-btn :disabled="!valid" color="primary" class="mr-4" @click="onSubmit">{{ text.CON }}</v-btn>              
             </v-card-actions>
           </v-card>
         </v-col>
@@ -158,7 +159,7 @@ export default {
       valid: true,
 
       showDialog: false,
-      dado: [],
+      dado: null,
       msg: "Welcome to Your Vue.js App",
       languages: ["Portuguese", "English"],
       pt: {
@@ -246,6 +247,7 @@ export default {
   },
   methods: {
     validate () {
+        this.showDialog = false;
         this.$refs.form.onSubmit()
     },
     reset  () {
@@ -256,6 +258,9 @@ export default {
         sessionStorage.setItem("language", "English");
       }
       this.language = sessionStorage.getItem("language");
+    },
+    backpage() {
+      history.back()
     },
     setLanguage() {
       sessionStorage.setItem("language", this.language);
@@ -268,44 +273,106 @@ export default {
       }
     },
     async onSubmit() {
-  console.log(this.form);
-  const authToken = "YOUR_AUTH_TOKEN"; // Replace this with your actual token
+      if(!this.valid) return;
+      console.log(this.form);
+      this.showDialog = false;
+      // const authToken = "YOUR_AUTH_TOKEN"; // Replace this with your actual token
 
-  const config = {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Content-Type": "application/json;charset=UTF-8",
-      Authorization: `Bearer ${authToken}`, // Add the token to the Authorization header
+      const config = {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json;charset=UTF-8",
+          // Authorization: `Bearer ${authToken}`, // Add the token to the Authorization header
+        },
+      };
+
+      try {
+        const response = await axios.post(
+          "https://api-az-infection-prediction.onrender.com/score",
+          {
+            "input_data": {
+              "columns": [
+                "Tipo_Cirurgia_Especifica",
+                "Tipo_Cirurgia",
+                "Num_Internacao",
+                "Primeira_Internacao",
+                "Idade_Anos",
+                "Acima_70_Anos",
+                "T_Ate_Cirurgia",
+                "T_Ate_Maior_4",
+                "Duracao_Cirurgia",
+                "Duracao_Acima_Duas_Horas",
+                "Potencial_Contaminacao",
+                "Cirurgia_Limpa",
+                "Anestesia_Geral",
+                "Emergencia",
+                "Gravidade_ASA",
+                "ASA_Maior_2",
+                "Protese",
+                "Cirurgia_Videolaparoscopíca",
+                "IRIC",
+                "Num_Procedimentos",
+                "Mais_de_Um_Proc",
+                "Num_Profissionais_Bloco",
+                "Acima_4_Profissionais"
+              ],
+              "index": [0],
+              "data": [
+                {
+                  "Tipo_Cirurgia_Especifica": 1,
+                  "Tipo_Cirurgia": this.form.Tipo_Cirurgia_Especifica,
+                  "Num_Internacao": this.form.Num_Internacao,
+                  "Primeira_Internacao": this.form.Num_Internacao == 1 ? 1 : 0,
+                  "Idade_Anos": this.form.Idade_Anos,
+                  "Acima_70_Anos": this.form.Idade_Anos > 70 ? 1 : 0,
+                  "T_Ate_Cirurgia": this.form.T_Ate_Cirurgia,
+                  "T_Ate_Maior_4": this.form.T_Ate_Cirurgia > 4 ? 1 : 0,
+                  "Duracao_Cirurgia": this.form.Duracao_Cirurgia,
+                  "Duracao_Acima_Duas_Horas": this.form.Duracao_Cirurgia > 2 ? 1 : 0,
+                  "Potencial_Contaminacao": 1,
+                  "Cirurgia_Limpa": this.form.Cirurgia_Limpa,
+                  "Anestesia_Geral": this.form.Anestesia_Geral,
+                  "Emergencia": this.form.Emergencia,
+                  "Gravidade_ASA": this.form.Gravidade_ASA,
+                  "ASA_Maior_2": this.form.Gravidade_ASA > 2 ? 1 :0,
+                  "Protese": this.form.Protese,
+                  "Cirurgia_Videolaparoscopíca": [1,3,5,7,9].includes(this.form.Tipo_Cirurgia_Especifica) ? 1 : 0 ,
+                  "IRIC": 1,
+                  "Num_Procedimentos": this.form.Num_Procedimentos,
+                  "Mais_de_Um_Proc": this.form.Num_Procedimentos > 1 ? 1 : 0,
+                  "Num_Profissionais_Bloco": 4,
+                  "Acima_4_Profissionais": 0
+                }
+              ]
+            }
+          },      
+          config
+        );
+
+        this.dado = response.data;
+        console.log('teste',response);
+        this.showDialog = true;    
+      } catch (error) {
+        console.log(error);
+        this.$awn.alert("Erro");
+      }
     },
-  };
-
-  try {
-    const response = await axios.post(
-      "https://prediction-mls.eastus2.inference.ml.azure.com/score",
-      this.form,
-      config
-    );
-
-    this.dado = response.data;
-    this.showDialog = true;
-    console.log(response);
-  } catch (error) {
-    console.log(error);
-    this.$awn.alert("Erro");
-  }
-},
     onReset(evt) {
       evt.preventDefault();
       // Reset our form values
-      this.form.email = "";
-      this.form.name = "";
-      this.form.food = null;
-      this.form.checked = [];
-      // Trick to reset/clear native browser form validation state
-      this.show = false;
-      this.$nextTick(() => {
-        this.show = true;
-      });
+      this.form = {
+        Tipo_Cirurgia_Especifica: "",
+        Num_Internacao: "",
+        Idade_Anos: "",
+        T_Ate_Cirurgia: "",
+        Duracao_Cirurgia: "0",
+        Cirurgia_Limpa: "0",
+        Anestesia_Geral: "0",
+        Emergencia: "0",
+        Gravidade_ASA: "",
+        Protese: "0",
+        Num_Procedimentos: "",
+      };
     },
   },
 };
